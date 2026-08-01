@@ -1,0 +1,367 @@
+---
+import Base from '../layouts/Base.astro';
+import WorldIndex from '../components/WorldIndex.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import { SITE, EMAILS, CONTACT, WORLDS } from '../lib/config';
+
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  url: SITE.url,
+  logo: `${SITE.url}/images/Sweeyam_Life_Logo_white.png`,
+  email: EMAILS.connect,
+  sameAs: [
+    'https://in.pinterest.com/sweeyamlife/',
+    'https://www.instagram.com/sweeyam.life/',
+    'https://www.facebook.com/sweeyamlife',
+    'https://www.youtube.com/@sweeyamlife',
+    'https://www.linkedin.com/company/sweeyamlife',
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: CONTACT.phoneE164,
+    contactType: 'customer support',
+    areaServed: 'IN',
+    availableLanguage: ['English'],
+  },
+};
+---
+
+<Base
+  title={SITE.tagline}
+  description={SITE.description}
+  headerVariant="overlay"
+  jsonLd={orgJsonLd}
+>
+  <!-- Hero -->
+  <section class="immersive-hero" id="top" aria-label="Sweeyam Life">
+    <div class="video-container">
+      <video preload="none" autoplay loop muted playsinline id="hero-video" poster="/images/hero-poster.jpg">
+        <source src="/images/portal-forest.mp4" type="video/mp4" />
+      </video>
+      <div class="warm-overlay"></div>
+    </div>
+
+    <div class="hero-left-align" id="hero-content">
+      <h1 class="hero-title-massive">Sweeyam<br />Life</h1>
+      <p class="hero-sub-warm" aria-label="Return to self, to nature and to meaningful everyday rituals.">
+        <span class="hero-sub-line">Return to self,</span>
+        <span class="hero-sub-line">to nature and to</span>
+        <span class="hero-sub-line hero-sub-line-em">meaningful everyday rituals.</span>
+      </p>
+    </div>
+
+    <a href="#promise" class="merged-indicator" aria-label="Accessible premium lifestyle and self-care products">
+      <span class="indicator-action">Accessible premium lifestyle and self-care products</span>
+      <div class="scroll-line"></div>
+    </a>
+  </section>
+
+  <!-- Our Promise -->
+  <section class="promise reveal" id="promise">
+    <div class="shell promise-split">
+      <div class="promise-content">
+        <div class="promise-heading">
+          <p class="eyebrow">Our Promise</p>
+          <h2 class="section-title">
+            Everyday care should do more than serve a purpose. <span class="mark promise-mark-italic">- it should carry meaning.</span>
+          </h2>
+        </div>
+        <div class="promise-copy">
+          <p>
+            Sweeyam Life is built on a single standard: everyday care that works honestly, feels joyful, and carries a <span class="editorial-accent">sense of care beyond the moment of use — by being kind to you and the earth</span>.
+          </p>
+          <p>Every product is shaped with care and intention, and delivered with radical honesty.</p>
+          <a class="button button-primary" href="#world">Explore our world</a>
+        </div>
+      </div>
+
+      <div class="promise-visual">
+        <div class="parallax-window">
+          <img loading="lazy" src="/images/Representation_13.png" alt="Sweeyam Life everyday rituals and natural care products" class="parallax-img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our World -->
+  <section class="world-section on-dark" id="world">
+    <div class="shell">
+      <div class="world-glass reveal">
+        <div class="world-index-header">
+          <p class="eyebrow on-dark">Our World</p>
+          <h2 class="section-title on-dark">
+            Anchored in nature and shaped with intention to — <span class="mark on-dark mark-italic">bring joy, meaning and sustainability.</span>
+          </h2>
+        </div>
+        <WorldIndex />
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Create -->
+  <ProcessSteps
+    eyebrow="How We Create"
+    title={<>From intention to creation, our process is shaped by care, craft and <span class="mark">radical honesty.</span></>}
+  />
+
+  <!-- Behind Sweeyam Life -->
+  <section class="card-stack-section behind-section" id="behind">
+    <div class="shell">
+      <div class="unified-card reveal">
+        <div class="behind-heading">
+          <p class="eyebrow">Behind Sweeyam Life</p>
+          <h2 class="section-title">Founder-led, women-powered and community-built.</h2>
+        </div>
+
+        <p class="founder-intro">
+          At the heart of Sweeyam Life is a women-led community: entrepreneurs, creators, operators, formulation thinkers and artisans bringing different forms of intelligence into one shared purpose.
+        </p>
+
+        <div class="founder-grid">
+          <article class="founder-card">
+            <div class="founder-photo"><img loading="lazy" src="/images/deepa.png" alt="Deepa, Founder and Managing Director" /></div>
+            <div class="founder-copy">
+              <h3>Deepa</h3>
+              <div class="role">Founder | Managing Director</div>
+              <p>Deepa founded Sweeyam Life to bring ancient wisdom into modern everyday living. She leads the product imagination of Sweeyam Life — exploring formulations, ingredients, everyday care needs and the emotional philosophy that gives the brand its quiet strength.</p>
+            </div>
+          </article>
+
+          <article class="founder-card">
+            <div class="founder-photo"><img loading="lazy" src="/images/surya.png" alt="Surya, Co-Founder and Permanent Director" /></div>
+            <div class="founder-copy">
+              <h3>Surya</h3>
+              <div class="role">Co-Founder | Permanent Director</div>
+              <p>Surya brings more than 26 years of strategy, operations and product-development leadership. At Sweeyam Life, he focuses on the business blueprint — from supply-chain thinking and digital systems to e-commerce readiness and long-term enterprise architecture.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grow With Us -->
+  <section class="card-stack-section" id="grow">
+    <div class="shell">
+      <div class="unified-card reveal">
+        <div class="behind-heading">
+          <p class="eyebrow">Grow With Us</p>
+          <h2 class="section-title">Building a kinder everyday, together.</h2>
+        </div>
+
+        <div class="grow-cards">
+          <a href={`mailto:${EMAILS.partners}`} class="grow-card">
+            <h3>Suppliers &amp; Artisans</h3>
+            <p>Makers and partners who share our standard for care, craft and responsibility.</p>
+          </a>
+          <a href={`mailto:${EMAILS.partners}`} class="grow-card">
+            <h3>R&amp;D &amp; Formulation Partners</h3>
+            <p>Formulation thinkers helping translate ancient wisdom into purpose-built products.</p>
+          </a>
+          <a href={`mailto:${EMAILS.partners}`} class="grow-card">
+            <h3>Women Entrepreneurs</h3>
+            <p>Independent businesses and creators growing alongside Sweeyam Life.</p>
+          </a>
+          <a href="/investors/" class="grow-card">
+            <h3>Investors &amp; Strategic Partners</h3>
+            <p>Founder-led, women-powered growth built with patient ambition and disciplined scale.</p>
+          </a>
+        </div>
+
+        <p class="community-line">
+          <strong>For investors and strategic partners:</strong> Sweeyam Life chooses craft over sameness, with strong R&amp;D, asset-light operations and fully digital systems built to scale responsibly. <a class="text-link" href="/investors/">Explore the investor overview.</a>
+        </p>
+
+        <div class="cta-table">
+          <a class="button button-primary" href={`mailto:${EMAILS.connect}`}>Start a conversation</a>
+          <a class="button button-brass" href="/investors/">Investor overview</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import '../scripts/home.ts';
+</script>
+
+<style>
+  /* Hero */
+  .immersive-hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: calc(var(--header-h) + 1.5rem) var(--page-pad) 6rem;
+    color: var(--on-dark);
+    overflow: hidden;
+    background: var(--navy-deep);
+  }
+
+  .video-container {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    transform: scale(var(--hero-scale, 1));
+    border-radius: var(--hero-radius, 0);
+    filter: blur(var(--hero-blur, 0));
+    transition: transform 0.4s ease-out, border-radius 0.4s ease-out, filter 0.4s ease-out;
+  }
+  .video-container video { width: 100%; height: 100%; object-fit: cover; }
+  .warm-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(16, 35, 61, 0.55) 0%, rgba(16, 35, 61, 0.15) 40%, rgba(16, 35, 61, 0.85) 100%);
+  }
+
+  .hero-left-align {
+    max-width: 56rem;
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .hero-title-massive {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2.75rem, 8vw, 5.5rem);
+    line-height: 0.98;
+    color: var(--on-dark);
+    text-shadow: 0 4px 30px rgba(8, 22, 39, 0.4);
+  }
+  .hero-sub-warm {
+    max-width: 32rem;
+    margin: 0;
+    display: grid;
+    gap: 0.15em;
+    font-size: var(--text-caption-up);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: var(--on-dark-soft);
+  }
+  .hero-sub-line {
+    display: block;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: hero-sub-in 0.7s var(--ease) forwards;
+  }
+  .hero-sub-line:nth-child(1) { animation-delay: 0.3s; }
+  .hero-sub-line:nth-child(2) { animation-delay: 0.5s; }
+  .hero-sub-line:nth-child(3) { animation-delay: 0.7s; }
+  .hero-sub-line-em { font-style: italic; color: var(--brass-light); }
+  @keyframes hero-sub-in { to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-sub-line { opacity: 1; transform: none; animation: none; }
+  }
+
+  .merged-indicator {
+    position: absolute;
+    left: 50%;
+    bottom: 2rem;
+    display: grid;
+    justify-items: center;
+    gap: 0.75rem;
+    transform: translateX(-50%);
+    text-align: center;
+    color: var(--on-dark);
+    text-decoration: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .merged-indicator:hover { transform: translateX(-50%) translateY(3px); opacity: 0.85; }
+  .indicator-action {
+    font-size: var(--text-caption-up);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--on-dark-soft);
+  }
+  .scroll-line { width: 1px; height: 44px; background: var(--brass-light); animation: pulse 2.2s var(--ease) infinite; transform-origin: top; }
+  @keyframes pulse { 0%, 100% { transform: scaleY(0.3); opacity: 0.5; } 50% { transform: scaleY(1); opacity: 1; } }
+
+  /* Promise */
+  .promise { padding-block: var(--space-section); position: relative; }
+  .promise-split {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: flex-start;
+  }
+  .promise-heading { margin-bottom: var(--space-md); }
+  .promise-mark-italic { font-style: italic; }
+  .promise-copy p { max-width: 42rem; margin-bottom: var(--space-md); }
+  .promise-visual { position: relative; z-index: 0; }
+
+  .parallax-window {
+    position: relative;
+    z-index: 2;
+    aspect-ratio: 3 / 2;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transform: scale(var(--para-scale, 1));
+    transition: transform 0.05s linear;
+  }
+  .parallax-img { width: 100%; height: 100%; object-fit: contain; display: block; transition: transform 0.6s var(--ease); }
+  .parallax-window:hover .parallax-img { transform: scale(1.06); }
+  @media (hover: none) { .parallax-window:hover .parallax-img { transform: none; } }
+
+  /* World */
+  .world-section {
+    position: relative;
+    padding-block: var(--space-section);
+    background:
+      radial-gradient(60% 70% at 85% 15%, rgba(217, 194, 152, 0.14), transparent 60%),
+      radial-gradient(50% 60% at 10% 90%, rgba(40, 75, 119, 0.4), transparent 60%),
+      var(--navy-deep);
+  }
+  .world-glass {
+    padding: clamp(1.5rem, 3.5vw, 2.75rem);
+    border: 1px solid rgba(244, 239, 230, 0.16);
+    border-radius: var(--radius-xl);
+    background: rgba(244, 239, 230, 0.06);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 24px 70px rgba(8, 22, 39, 0.3);
+  }
+  .world-index-header { max-width: 44rem; margin-bottom: var(--space-lg); }
+  .mark-italic { font-style: italic; }
+
+  /* Behind */
+  .behind-section { padding-top: var(--space-section); padding-bottom: var(--space-section-compact); }
+  .behind-heading { max-width: 36rem; margin-bottom: var(--space-lg); }
+  .founder-intro { max-width: 42rem; font-size: var(--text-body); margin-bottom: var(--space-xl); }
+
+  .founder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); }
+  .founder-card { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: clamp(1rem, 2vw, 1.75rem); align-items: start; }
+  .founder-photo { border-radius: var(--radius-lg); overflow: hidden; background: var(--surface-card); }
+  .founder-photo img { width: 100%; height: auto; object-fit: contain; }
+  .founder-copy h3 { margin-bottom: 0.25rem; }
+  .founder-copy p { font-size: var(--text-body-sm); margin-bottom: 0; }
+
+  /* Grow */
+  .grow-cards { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-bottom: var(--space-xl); }
+  .grow-card {
+    display: block;
+    padding: var(--space-lg);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    background: var(--surface-card);
+    transition: transform var(--dur-normal) var(--ease), border-color var(--dur-normal) var(--ease), box-shadow var(--dur-normal) var(--ease);
+  }
+  .grow-card:hover { transform: translateY(-4px); border-color: var(--brass-light); box-shadow: var(--shadow-soft); }
+  .grow-card h3 { margin-bottom: 0.4rem; font-size: var(--text-title-md); color: var(--navy-deep); font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
+  .grow-card p { margin: 0; font-size: var(--text-body-sm); }
+
+  .community-line { max-width: 46rem; margin-bottom: var(--space-lg); }
+
+  @media (max-width: 62rem) {
+    .promise-split { grid-template-columns: 1fr; }
+    .promise-visual { max-width: 32rem; }
+    .founder-grid, .grow-cards { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 48rem) {
+    .immersive-hero { padding-bottom: 5rem; }
+  }
+</style>

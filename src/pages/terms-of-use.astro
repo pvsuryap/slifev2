@@ -1,0 +1,43 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { EMAILS } from '../lib/config';
+---
+
+<LegalLayout
+  title="Terms of Use"
+  description="The terms that govern access and use of the Sweeyam Life website."
+  updated="21 July 2026"
+>
+  <h2>1. Acceptance</h2>
+  <p>By accessing or using this website, you agree to these Terms of Use. If you do not agree, please do not use the website.</p>
+
+  <h2>2. Website purpose</h2>
+  <p>This website presents information about Sweeyam Life, its philosophy, proposed product worlds, founders, partnerships and launch journey. It is currently informational and does not constitute an e-commerce offer unless purchasing services are expressly introduced.</p>
+
+  <h2>3. No professional or medical advice</h2>
+  <p>Website content is provided for general information only and is not medical, therapeutic, legal, financial or other professional advice.</p>
+
+  <h2>4. Product and launch information</h2>
+  <p>Descriptions, visuals, concepts, product counts, timelines and launch plans may evolve. Nothing on this website is a binding promise that a particular product, feature, price or launch date will be available.</p>
+
+  <h2>5. Intellectual property</h2>
+  <p>Unless otherwise stated, the Sweeyam Life name, logo, brand identity, text, graphics, photographs, layouts and concepts are owned by or licensed to Sweeyam Life. They may not be copied, reproduced, modified, published or commercially exploited without prior written permission.</p>
+
+  <h2>6. Acceptable use</h2>
+  <p>You may not misuse the website, interfere with its operation, attempt unauthorised access, introduce malicious code, scrape content at scale, impersonate another person or use the website for unlawful activity.</p>
+
+  <h2>7. Third-party links</h2>
+  <p>We may link to third-party websites and social platforms. We do not control those services and are not responsible for their content, availability, security or privacy practices.</p>
+
+  <h2>8. Disclaimer and liability</h2>
+  <p>We aim to keep the website accurate and available, but do not warrant that all content will always be complete, current, error-free or uninterrupted. To the extent permitted by law, Sweeyam Life will not be liable for indirect, incidental or consequential loss arising from use of this website.</p>
+
+  <h2>9. Governing law</h2>
+  <p>These terms are governed by the laws of India. Any dispute will be subject to the jurisdiction of a competent court in India, unless applicable law requires otherwise.</p>
+
+  <h2>10. Changes</h2>
+  <p>We may update these terms when our website or services change. Continued use after publication of revised terms indicates acceptance of the updated version.</p>
+
+  <h2>11. Contact</h2>
+  <p>Questions may be sent to <a href={`mailto:${EMAILS.compliance}`}>{EMAILS.compliance}</a>.</p>
+</LegalLayout>

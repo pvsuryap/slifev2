@@ -1,0 +1,122 @@
+---
+import { PROCESS_STEPS } from '../lib/process';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  steps?: typeof PROCESS_STEPS;
+}
+
+const { eyebrow, title, steps = PROCESS_STEPS } = Astro.props;
+---
+
+<section class="process-section" id="process">
+  <div class="shell">
+    <div class="unified-card process-card" data-process>
+      <div class="process-content-col">
+        <div class="process-heading">
+          <p class="eyebrow">{eyebrow}</p>
+          <h2 class="section-title">{title}</h2>
+        </div>
+
+        <ol class="process-list">
+          {steps.map((step, i) => (
+            <li class:list={['process-step', i === 0 && 'active']}>
+              <div class="p-num" aria-hidden="true">{step.num}</div>
+              <div class="p-copy">
+                <h3>{step.title}</h3>
+                <p>{step.copy}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div class="process-image-stage" aria-hidden="true">
+        {steps.map((step, i) => (
+          <img loading="lazy" class:list={['process-img-layer', i === 0 && 'active']} src={step.image} alt="" />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const card = document.querySelector<HTMLElement>('[data-process]');
+  if (card) {
+    const steps = Array.from(card.querySelectorAll<HTMLLIElement>('.process-step'));
+    const layers = Array.from(card.querySelectorAll<HTMLElement>('.process-img-layer'));
+    const touchLayout = window.matchMedia('(hover: none), (pointer: coarse)');
+    let current = 0;
+
+    const setStep = (index: number) => {
+      const safe = Math.max(0, Math.min(steps.length - 1, index));
+      if (safe === current) return;
+      current = safe;
+      steps.forEach((step, i) => step.classList.toggle('active', i === safe));
+      layers.forEach((img, i) => img.classList.toggle('active', i === safe));
+    };
+
+    steps.forEach((step, index) => {
+      step.addEventListener('mouseenter', () => setStep(index));
+      step.addEventListener('click', () => setStep(index));
+      step.addEventListener('focusin', () => setStep(index));
+    });
+
+    if (!touchLayout.matches) {
+      card.addEventListener('mouseleave', () => setStep(0));
+    }
+  }
+</script>
+
+<style>
+  .process-section { padding-block: var(--space-section); }
+
+  .process-card {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: stretch;
+  }
+
+  .process-heading { margin-bottom: var(--space-md); }
+
+  .process-list { list-style: none; margin: 0; padding: 0; }
+
+  .process-step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-md);
+    align-items: baseline;
+    padding-block: var(--space-sm);
+    border-bottom: 1px solid var(--hairline);
+    cursor: pointer;
+    transition: background var(--dur-normal) var(--ease);
+  }
+  .process-step:last-child { border-bottom: 0; }
+
+  .p-num { font-family: var(--font-display); font-size: var(--text-caption-up); color: var(--brass); letter-spacing: 0.05em; }
+
+  .p-copy h3 { margin: 0 0 0.25rem; font-size: var(--text-title-lg); color: var(--ink); }
+  .p-copy p { margin: 0; font-size: var(--text-body-sm); color: var(--body); max-width: 34rem; }
+
+  .process-image-stage {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    max-height: 30rem;
+    width: 100%;
+    align-self: center;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: var(--navy-deep);
+    box-shadow: var(--shadow-card);
+  }
+  .process-img-layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.04); transition: opacity var(--dur-slow) var(--ease), transform 1.2s var(--ease); }
+  .process-img-layer.active { opacity: 1; transform: scale(1); }
+
+  @media (max-width: 62rem) {
+    .process-card { grid-template-columns: 1fr; }
+    .process-image-stage { order: -1; aspect-ratio: 16 / 9; max-height: 16rem; }
+    .process-step { cursor: default; }
+  }
+</style>

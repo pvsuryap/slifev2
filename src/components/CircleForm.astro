@@ -1,0 +1,141 @@
+---
+import { GOOGLE_FORMS, EMAILS } from '../lib/config';
+import { DPDP_LANGUAGES, DPDP_TRANSLATIONS, DPDP_DEFAULT_LANG } from '../lib/dpdp';
+
+const t = DPDP_TRANSLATIONS[DPDP_DEFAULT_LANG];
+const consentValue =
+  'I agree to receive occasional Sweeyam Life updates and understand that I can withdraw my consent at any time.';
+const renderedNotice = t.notice
+  .replace('{email}', EMAILS.compliance)
+  .replace('{policy}', t.policyKeyword);
+---
+
+<div class="circle-form-shell">
+  <h3>Join the Sweeyam Circle</h3>
+  <p>Occasional notes on our launch, product worlds, founder stories and the making of Sweeyam Life.</p>
+
+  <form class="sweeyam-form" action={GOOGLE_FORMS.action} method="POST" target="_blank" data-dpdp-form novalidate>
+    <div class="sweeyam-input-group">
+      <label for="entry_name">Name</label>
+      <input type="text" id="entry_name" name={GOOGLE_FORMS.entry.name} placeholder="Your full name" autocomplete="name" required />
+      <p class="field-error" data-error-for="entry_name" hidden></p>
+    </div>
+    <div class="sweeyam-input-group">
+      <label for="entry_mobile">Mobile Number</label>
+      <input type="tel" id="entry_mobile" name={GOOGLE_FORMS.entry.mobile} placeholder="e.g. 9848271543" autocomplete="tel" pattern="^[6-9]\d{9}$" title="Please enter a valid 10-digit Indian mobile number" required />
+      <p class="field-error" data-error-for="entry_mobile" hidden></p>
+    </div>
+    <div class="sweeyam-input-group">
+      <label for="entry_email">Email Address</label>
+      <input type="email" id="entry_email" name={GOOGLE_FORMS.entry.email} placeholder="you@example.com" autocomplete="email" required />
+      <p class="field-error" data-error-for="entry_email" hidden></p>
+    </div>
+
+    <div class="sweeyam-form-row">
+      <label class="dpdp-label" for="dpdp-lang">Notice Language</label>
+      <select id="dpdp-lang" class="sweeyam-select" data-dpdp-select>
+        {DPDP_LANGUAGES.map((l) => <option value={l.code}>{l.label}</option>)}
+      </select>
+    </div>
+
+    <div class="sweeyam-checkbox-group">
+      <input type="checkbox" id="entry_consent" name={GOOGLE_FORMS.entry.consent} value={consentValue} required />
+      <label for="entry_consent" id="consent-text" data-dpdp-consent>{t.consent}</label>
+    </div>
+
+    <button type="submit" class="button button-primary sweeyam-submit" data-dpdp-submit>Join the Circle</button>
+    <p class="form-status" role="status" aria-live="polite" data-dpdp-status hidden></p>
+    <p class="circle-form-notice" id="notice-text" data-dpdp-notice>{renderedNotice}</p>
+  </form>
+
+  <p class="circle-form-foot">You can withdraw your consent at any time by emailing <a href={`mailto:${EMAILS.compliance}`}>{EMAILS.compliance}</a>. Read our <a href="/privacy-policy/">Privacy Policy</a>.</p>
+</div>
+
+<script>
+  import { DPDP_TRANSLATIONS, type LangCode } from '../lib/dpdp';
+
+  const form = document.querySelector<HTMLFormElement>('[data-dpdp-form]');
+  if (form) {
+    const select = form.querySelector<HTMLSelectElement>('[data-dpdp-select]');
+    const consentEl = form.querySelector<HTMLElement>('[data-dpdp-consent]');
+    const noticeEl = form.querySelector<HTMLElement>('[data-dpdp-notice]');
+    const statusEl = form.querySelector<HTMLElement>('[data-dpdp-status]');
+    const submitBtn = form.querySelector<HTMLButtonElement>('[data-dpdp-submit]');
+
+    const complianceEmail = 'compliance@sweeyamlife.co.in';
+    const renderNotice = (entry: (typeof DPDP_TRANSLATIONS)[LangCode]): string => {
+      const email = `<a href="mailto:${complianceEmail}">${complianceEmail}</a>`;
+      const policy = `<a href="/privacy-policy/">${entry.policyKeyword}</a>`;
+      return entry.notice.replace('{email}', email).replace('{policy}', policy);
+    };
+
+    const setLang = (code: string) => {
+      const entry = DPDP_TRANSLATIONS[code as LangCode];
+      if (!entry || !consentEl || !noticeEl) return;
+      consentEl.textContent = entry.consent;
+      noticeEl.innerHTML = renderNotice(entry);
+    };
+
+    select?.addEventListener('change', (e) => {
+      setLang((e.target as HTMLSelectElement).value);
+    });
+
+    const inputs = Array.from(form.querySelectorAll<HTMLInputElement>('input'));
+
+    const showError = (input: HTMLInputElement) => {
+      const error = form.querySelector<HTMLElement>(`[data-error-for="${input.id}"]`);
+      const message = input.validity.valueMissing
+        ? 'Please fill in this field.'
+        : input.validity.patternMismatch
+          ? 'Please enter a valid 10-digit Indian mobile number.'
+          : input.validity.typeMismatch
+            ? 'Please enter a valid email address.'
+            : 'Please check this field.';
+      input.setAttribute('aria-invalid', 'true');
+      if (error) {
+        error.textContent = message;
+        error.hidden = false;
+      }
+    };
+
+    const clearError = (input: HTMLInputElement) => {
+      input.removeAttribute('aria-invalid');
+      const error = form.querySelector<HTMLElement>(`[data-error-for="${input.id}"]`);
+      if (error) error.hidden = true;
+    };
+
+    inputs.forEach((input) => {
+      input.addEventListener('invalid', (e) => {
+        e.preventDefault();
+        showError(input);
+      });
+      input.addEventListener('input', () => clearError(input));
+    });
+
+    form.addEventListener('submit', (e) => {
+      const valid = form.checkValidity();
+      if (!valid) {
+        e.preventDefault();
+        inputs.forEach((input) => {
+          if (!input.validity.valid) showError(input);
+        });
+        const firstInvalid = inputs.find((i) => !i.validity.valid);
+        firstInvalid?.focus();
+        return;
+      }
+      if (statusEl) {
+        statusEl.textContent = 'Opening Google Forms to record your response…';
+        statusEl.hidden = false;
+      }
+      if (submitBtn) submitBtn.setAttribute('aria-busy', 'true');
+    });
+  }
+</script>
+
+<style>
+  .circle-form-shell { max-width: 26rem; }
+  .circle-form-shell h3 { color: var(--on-dark); }
+  .circle-form-shell > p { color: var(--on-dark-soft); font-size: var(--text-body-sm); }
+  .circle-form-foot { font-size: var(--text-caption); color: var(--on-dark-soft); }
+  .circle-form-foot a { color: var(--brass-light); text-decoration: underline; text-underline-offset: 2px; }
+</style>

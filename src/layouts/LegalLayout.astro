@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow?: string;
+  updated?: string;
+}
+
+const { title, description, eyebrow = 'Legal', updated } = Astro.props;
+const pageTitle = `${title} | Sweeyam Life`;
+---
+
+<Base title={pageTitle} description={description}>
+  <section class="page-hero" id="top">
+    <div class="shell">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1 class="hero-title">{title}</h1>
+      {updated && <p class="updated on-dark-soft">Last updated: {updated}</p>}
+    </div>
+  </section>
+
+  <main class="card-stack-section" id="main-content" tabindex="-1">
+    <div class="shell">
+      <article class="unified-card content reveal">
+        <slot />
+      </article>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .page-hero { padding-block: calc(var(--header-h) + var(--space-section-compact)) var(--space-section-compact); background: var(--navy-deep); }
+  .hero-title { color: var(--on-dark); }
+  .updated { margin-top: var(--space-sm); font-size: var(--text-body-sm); }
+
+  .content h2 {
+    margin-top: var(--space-xxl);
+    margin-bottom: var(--space-sm);
+    font-family: var(--font-body);
+    font-size: var(--text-title-lg);
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--navy-deep);
+  }
+  .content h2:first-child { margin-top: 0; }
+  .content p { max-width: 52rem; margin-bottom: var(--space-md); }
+  .content ul { margin: 0 0 var(--space-lg); padding-left: var(--space-lg); }
+  .content li { margin-bottom: 0.5rem; }
+  .content a { color: var(--brass-text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  .content a:hover { color: var(--brass-deep); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-hero { background: var(--navy-deep); }
+  }
+</style>

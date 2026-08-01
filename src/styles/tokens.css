@@ -1,0 +1,104 @@
+/* Sweeyam Life — design tokens (source: docs/DESIGN-SWEeyAM.md) */
+
+:root {
+  /* Brand & accent */
+  --brass: #b08d57;
+  --brass-deep: #8f6f3f;
+  --brass-light: #d9c298;
+  --brass-disabled: #e6dfd4;
+  --brass-text: #7c5e33;
+
+  /* Ink & text */
+  --ink: #1c1b18;
+  --body: #565149;
+  --body-strong: #3f3b32;
+  --muted: #6e6a61;
+  --muted-soft: #8e8a81;
+
+  /* Surfaces */
+  --paper: #fffdf9;
+  --canvas: #fffdf9;
+  --surface-soft: #f6f2ea;
+  --surface-card: #f1ebe0;
+  --surface-cream-strong: #e9e1d2;
+  --navy: #1a365d;
+  --navy-deep: #10233d;
+  --navy-soft: #284b77;
+  --white: #fafafa;
+
+  /* On-dark text */
+  --on-dark: #f4efe6;
+  --on-dark-soft: #aeb9cb;
+
+  /* Ground & growth */
+  --brown: #5c4033;
+  --brown-deep: #402c23;
+  --green: #2d5a27;
+  --green-deep: #1e3d1a;
+
+  /* Hairlines */
+  --hairline: #dfd8ca;
+  --hairline-soft: #eae4d8;
+  --line: rgba(26, 54, 93, 0.15);
+  --line-dark: rgba(244, 239, 230, 0.12);
+
+  /* Semantic */
+  --success: #2d5a27;
+  --warning: #c99a4b;
+  --error: #c64545;
+
+  /* Typography */
+  --font-display: 'Marcellus', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Type scale (approx. DESIGN-SWEeyAM hierarchy) */
+  --text-display-xl: clamp(3.2rem, 6vw, 4rem);
+  --text-display-lg: clamp(2.5rem, 4.5vw, 3rem);
+  --text-display-md: clamp(1.8rem, 2.8vw, 2.25rem);
+  --text-display-sm: clamp(1.4rem, 2vw, 1.75rem);
+  --text-title-lg: clamp(1.25rem, 1.7vw, 1.375rem);
+  --text-title-md: 1.125rem;
+  --text-title-sm: 1rem;
+  --text-body: 1rem;
+  --text-body-sm: 0.875rem;
+  --text-caption: 0.8125rem;
+  --text-caption-up: 0.75rem;
+  --text-nav: 0.8125rem;
+  --text-button: 0.875rem;
+
+  /* Motion */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-quick: cubic-bezier(0.3, 0, 0.2, 1);
+  --dur-instant: 80ms;
+  --dur-quick: 200ms;
+  --dur-normal: 300ms;
+  --dur-slow: 700ms;
+
+  /* Spacing & layout */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-section: clamp(4rem, 7vw, 6rem);
+  --space-section-compact: clamp(3rem, 5vw, 4.5rem);
+  --shell: min(100%, 88rem);
+  --page-pad: clamp(1.25rem, 4.5vw, 4.5rem);
+  --header-h: 5rem;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 9999px;
+
+  /* Elevation */
+  --shadow-soft: 0 1px 3px rgba(16, 35, 61, 0.08);
+  --shadow-card: 0 24px 70px rgba(16, 35, 61, 0.13);
+  --focus-ring: 3px solid var(--brass-light);
+  --focus-halo: 0 0 0 7px rgba(16, 35, 61, 0.9);
+}

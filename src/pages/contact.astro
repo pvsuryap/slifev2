@@ -1,0 +1,110 @@
+---
+import Base from '../layouts/Base.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { EMAILS, CONTACT, SOCIALS } from '../lib/config';
+
+const description = 'Contact Sweeyam Life by email, WhatsApp or official social channels.';
+const telHref = `tel:+${CONTACT.whatsappNumber}`;
+const waHref = `https://wa.me/${CONTACT.whatsappNumber}?text=${CONTACT.whatsappText}`;
+---
+
+<Base title="Contact | Sweeyam Life" description={description}>
+  <section class="page-hero" id="top">
+    <div class="shell">
+      <p class="eyebrow">Connect</p>
+      <h1 class="hero-title">We would love to hear from you.</h1>
+    </div>
+  </section>
+
+  <main class="card-stack-section" id="main-content" tabindex="-1">
+    <div class="shell">
+      <article class="unified-card content reveal">
+        <h2 class="section-title">Start a conversation</h2>
+        <p>
+          We welcome conversations with customers, partners, suppliers, artisans, formulation thinkers, investors and people who believe in building a kinder everyday.
+        </p>
+
+        <div class="contact-grid">
+          <section class="contact-card">
+            <p class="eyebrow">Email</p>
+            <h2>For general enquiries</h2>
+            <p>Send us a note and our team will get back to you as soon as reasonably possible.</p>
+            <a class="contact-action" href={`mailto:${EMAILS.connect}`}>{EMAILS.connect}</a>
+          </section>
+          <section class="contact-card">
+            <p class="eyebrow">WhatsApp</p>
+            <h2>Message the Sweeyam Life team</h2>
+            <p>For quick questions, you can reach us on WhatsApp.</p>
+            <a class="contact-action" href={waHref} target="_blank" rel="noopener">{CONTACT.phoneDisplay}</a>
+          </section>
+        </div>
+
+        <div class="connect-block">
+          <h2>Connect with Sweeyam Life</h2>
+          <SocialLinks variant="default" />
+        </div>
+
+        <div class="connect-block">
+          <h2>Response expectations</h2>
+          <p>
+            We are currently preparing for launch. Messages are reviewed by the Sweeyam Life team, and we will respond as soon as reasonably possible. Please do not send confidential formulations, financial information or other sensitive material through public social channels.
+          </p>
+          <div class="notice">
+            <strong>Business enquiries:</strong> Include a clear subject line and a short summary so we can direct your message appropriately.
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .page-hero { padding-block: calc(var(--header-h) + var(--space-section-compact)) var(--space-section-compact); }
+  .hero-title { max-width: 22ch; }
+
+  .content > .section-title { max-width: 30ch; }
+  .content > p { max-width: 46rem; }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-block: var(--space-xl); }
+  .contact-card {
+    padding: var(--space-lg);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    background: var(--surface-card);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .contact-card h2 { font-size: var(--text-title-lg); margin-bottom: 0.5rem; }
+  .contact-card p { font-size: var(--text-body-sm); }
+  .contact-action {
+    margin-top: auto;
+    padding-top: var(--space-md);
+    color: var(--brass-text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--brass-light);
+    text-underline-offset: 3px;
+    word-break: break-word;
+  }
+  .contact-action:hover { color: var(--brass-deep); }
+
+  .connect-block { margin-top: var(--space-xxl); }
+  .connect-block h2 { font-size: var(--text-title-lg); margin-bottom: var(--space-md); }
+  .connect-block > p { max-width: 46rem; }
+
+  .notice {
+    margin-top: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    border-left: 3px solid var(--brass);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    background: var(--surface-soft);
+    font-size: var(--text-body-sm);
+    color: var(--body-strong);
+    max-width: 46rem;
+  }
+
+  @media (max-width: 48rem) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+</style>
