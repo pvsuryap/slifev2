@@ -27,8 +27,10 @@ const worlds = (await getCollection('worlds')).sort((a, b) =>
   if (wrap) {
     const slices = Array.from(wrap.querySelectorAll<HTMLButtonElement>('.idisp-slice'));
     const imgs = slices.map((s) => s.dataset.img ?? '');
+    const isMobile = () => window.matchMedia('(max-width: 48rem)').matches;
 
     const join = (index: number) => {
+      if (isMobile()) return;
       if (index === -1) {
         slices.forEach((slice, i) => {
           slice.style.setProperty('--bg', `url('${imgs[i]}')`);
@@ -62,32 +64,6 @@ const worlds = (await getCollection('worlds')).sort((a, b) =>
       }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
-
-    const isMobile = () => window.matchMedia('(max-width: 48rem)').matches;
-    const scroller = wrap.querySelector<HTMLElement>('.idisp-slices');
-    let timer: number | undefined;
-
-    const advance = () => {
-      if (!isMobile() || !scroller) return;
-      const next = (scroller.scrollLeft >= scroller.scrollWidth - scroller.clientWidth - 8)
-        ? 0
-        : scroller.scrollLeft + scroller.clientWidth;
-      scroller.scrollTo({ left: next, behavior: 'smooth' });
-    };
-
-    const start = () => {
-      if (isMobile() && scroller) timer = window.setInterval(advance, 3500);
-    };
-    const stop = () => {
-      if (timer) window.clearInterval(timer);
-      timer = undefined;
-    };
-
-    start();
-    window.addEventListener('resize', start);
-    scroller?.addEventListener('touchstart', stop, { passive: true });
-    scroller?.addEventListener('scroll', stop, { passive: true });
-    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
   }
 </script>
 
@@ -151,7 +127,7 @@ const worlds = (await getCollection('worlds')).sort((a, b) =>
     width: 100%;
     padding: clamp(0.5rem, 0.9vw, 0.85rem) 0 clamp(0.6rem, 1vw, 1rem);
     font-family: var(--font-display);
-    font-size: clamp(1rem, 1.6vw, 1.35rem);
+    font-size: clamp(0.85rem, 1.15vw, 1.05rem);
     font-weight: 400;
     letter-spacing: 0.04em;
     line-height: 1.15;
