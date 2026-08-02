@@ -1,9 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import ProcessSteps from '../components/ProcessSteps.astro';
-import WorldIndex from '../components/WorldIndex.astro';
 import { SITE, EMAILS } from '../lib/config';
-import { INVESTOR_PROCESS_STEPS } from '../lib/process';
 
 const description =
   "Discover Sweeyam Life's thoughtful approach to building an accessible premium lifestyle and self-care brand for India.";
@@ -18,11 +15,11 @@ const description =
         <h1 class="on-dark">Building India's thoughtful everyday-living brand.</h1>
         <p class="hero-lede on-dark-soft">
           Premium lifestyle and self-care brand. Rooted in nature, built thoughtfully, with products that are
-          <span class="mark on-dark">kind to you and the Earth.</span>
+          <span class="mark on-dark">— Kind to you and the Earth.</span>
         </p>
         <div class="button-row">
-          <a class="button button-primary" href="#opportunity">View the opportunity</a>
-          <a class="button button-ghost" href={`mailto:${EMAILS.investors}?subject=Investor%20conversation%20with%20Sweeyam%20Life`}>Start an investor conversation</a>
+          <a class="button button-brass" href="#opportunity">View the opportunity</a>
+          <a class="button button-on-dark" href={`mailto:${EMAILS.investors}?subject=Investor%20conversation%20with%20Sweeyam%20Life`}>Start a conversation</a>
         </div>
       </div>
       <aside class="thesis on-dark" aria-label="The investment thesis">
@@ -42,11 +39,8 @@ const description =
       <div class="split-intro reveal">
         <div>
           <p class="eyebrow">Our Promise</p>
-          <h2 class="section-title">Everyday care should do more than serve a purpose. <span class="mark">It should carry meaning.</span></h2>
+          <h2 class="section-title">Everyday care should do more than serve a purpose. <span class="mark investors-mark">—&nbsp;It should carry meaning.</span></h2>
         </div>
-        <p class="lede">
-          We are building a brand for people who want products that work, feel considered and reflect their values — without moving beyond the reach of everyday Indian households.
-        </p>
       </div>
       <div class="principle-grid reveal">
         <article class="principle">
@@ -73,12 +67,12 @@ const description =
     <div class="shell opportunity-layout">
       <div class="opportunity-copy reveal">
         <p class="eyebrow">The Opportunity</p>
-        <h2 class="section-title">Familiar categories. Fragmented choices. <span class="mark">Room for a trusted everyday brand.</span></h2>
+        <h2 class="section-title">Familiar categories. Fragmented choices. <span class="mark opportunity-mark">—&nbsp;Room for a trusted everyday brand.</span></h2>
         <p class="lede">
           Indian consumers increasingly discover brands digitally, expect more from product experience and look for credible choices that align performance with responsibility.
         </p>
         <p>
-          Sweeyam Life brings these expectations together under one coherent house of products — beginning with high-frequency self-care rituals and expanding deliberately into the home.
+          Sweeyam Life brings these expectations together within one coherent house of products — beginning with high-frequency self-care rituals, building trust through everyday experience, and creating a natural pathway into a broader, more meaningful product range.
         </p>
         <a class="button button-brass" href={`mailto:${EMAILS.investors}?subject=Request%20for%20Sweeyam%20Life%20investor%20brief`}>Request the investor brief</a>
       </div>
@@ -94,54 +88,33 @@ const description =
     </div>
   </section>
 
-  <!-- Our World -->
-  <section class="world-section on-dark" id="world">
-    <div class="shell">
-      <div class="world-glass reveal">
-        <div class="world-index-header">
-          <p class="eyebrow on-dark">Our World</p>
-          <h2 class="section-title on-dark">One brand promise across self, home and everyday living.</h2>
-        </div>
-        <WorldIndex />
-      </div>
-    </div>
-  </section>
-
-  <!-- Product Representations -->
+  <!-- Brand Philosophy -->
   <section class="representations" id="product-representations">
     <div class="shell">
       <div class="narrow reveal">
-        <p class="eyebrow">Product Representations</p>
+        <p class="eyebrow">Brand Philosophy</p>
         <h2 class="section-title">One identity, expressed through <span class="mark">repeatable product platforms.</span></h2>
         <p class="lede">
           These directional concepts show how Sweeyam Life's brand system could extend across formats while keeping the portfolio recognisable, premium and operationally coherent.
         </p>
       </div>
-      <div class="representation-grid reveal">
-        <article class="representation-card">
-          <div class="representation-media">
-            <img loading="lazy" decoding="async" src="/images/Representation_1_web.jpg" alt="Sweeyam Life brand-world overview showing a coordinated family of lifestyle and self-care products" />
+      <div class="representation-philosophy reveal">
+        <div class="representation-media">
+          <img loading="lazy" decoding="async" src="/images/Representation_13.png" alt="Sweeyam Life brand philosophy expressed across everyday living" />
+          <div class="philosophy-panel" aria-hidden="true">
+            <h3 class="philosophy-title animate slide-left pop delay-1">Strategic Differentiators</h3>
+            <ul class="philosophy-list">
+              <li class="animate slide-left pop delay-2">Meaningful Product Intent</li>
+              <li class="animate slide-left pop delay-3">Disciplined Product Development</li>
+              <li class="animate slide-left pop delay-4">Performance and Efficacy</li>
+              <li class="animate slide-left pop delay-5">Accessible Premium Experience</li>
+              <li class="animate slide-left pop delay-6">Radical Honesty</li>
+              <li class="animate slide-left pop delay-7">India-First Relevance</li>
+              <li class="animate slide-left pop delay-8">Creative Enterprise Supported by Systems</li>
+            </ul>
           </div>
-          <div class="representation-body">
-            <p class="eyebrow">Brand-world overview</p>
-            <h3>One visual language across everyday living.</h3>
-            <p>A coherent identity gives each product world room to feel distinct while remaining unmistakably Sweeyam Life.</p>
-          </div>
-        </article>
-        <article class="representation-card">
-          <div class="representation-media">
-            <img loading="lazy" decoding="async" src="/images/Representation_5_web.jpg" alt="Sweeyam Life solid-care platform with coordinated soap formats and packaging" />
-          </div>
-          <div class="representation-body">
-            <p class="eyebrow">Focused solid-care platform</p>
-            <h3>One soap architecture, two purposeful formats.</h3>
-            <p>A retail bar and a travel or hospitality bar use a shared system to balance premium presence with operational discipline.</p>
-          </div>
-        </article>
+        </div>
       </div>
-      <p class="concept-note">
-        Directional product representations only. Final packaging, materials, claims, artwork and production specifications remain subject to engineering, compatibility, regulatory and commercial validation.
-      </p>
     </div>
   </section>
 
@@ -150,7 +123,7 @@ const description =
     <div class="shell">
       <div class="values-heading reveal">
         <p class="eyebrow on-dark">Core Values</p>
-        <h2 class="section-title on-dark">Five principles. <span class="mark on-dark">One standard for every decision.</span></h2>
+        <h2 class="section-title on-dark">Five principles. <span class="mark on-dark values-mark">—&nbsp;One standard for every decision.</span></h2>
       </div>
       <div class="value-rail reveal" aria-label="Sweeyam Life core values">
         <article class="value-card">
@@ -182,19 +155,12 @@ const description =
     </div>
   </section>
 
-  <!-- How We Build -->
-  <ProcessSteps
-    steps={INVESTOR_PROCESS_STEPS}
-    eyebrow="How We Build"
-    title={<>Handmade is our product philosophy. <span class="mark">Systems are our scaling philosophy.</span></>}
-  />
-
   <!-- Built for disciplined growth -->
   <section class="scale-section" id="scale">
     <div class="shell scale-grid">
       <div class="reveal">
         <p class="eyebrow">Built for disciplined growth</p>
-        <h2 class="section-title">A brand with human warmth <span class="mark">and an operating system behind it.</span></h2>
+        <h2 class="section-title">A brand with human warmth <span class="mark scale-mark">—&nbsp;and an operating system behind it.</span></h2>
       </div>
       <div class="scale-points reveal">
         <article class="scale-point">
@@ -222,17 +188,14 @@ const description =
     <div class="shell grow-grid">
       <div class="reveal">
         <p class="eyebrow">Grow With Us</p>
-        <h2 class="section-title">Partner with a brand built for <span class="mark">patient ambition and disciplined growth.</span></h2>
+        <h2 class="section-title">Partner with a brand built for <span class="mark grow-mark">—&nbsp;patient ambition and disciplined growth.</span></h2>
         <p class="lede">
-          We welcome conversations with investors and strategic partners who share our belief that meaningful everyday products can create enduring consumer and enterprise value.
+          We welcome conversations with investors and partners who share our beliefs and want to create an enduring consumer and enterprise value.
         </p>
-      </div>
-      <div class="grow-actions reveal">
-        <a class="button button-primary" href={`mailto:${EMAILS.investors}?subject=Investor%20conversation%20with%20Sweeyam%20Life`}>Start an investor conversation</a>
-        <a class="button button-brass" href={`mailto:${EMAILS.investors}?subject=Request%20for%20Sweeyam%20Life%20investor%20brief`}>Request the investor brief</a>
-        <p class="grow-note">
-          For suppliers, artisans, R&amp;D collaborators and women entrepreneurs: <a class="text-link" href="/contact/">Contact Us</a>
-        </p>
+        <div class="button-row">
+          <a class="button button-brass" href={`mailto:${EMAILS.investors}?subject=Investor%20conversation%20with%20Sweeyam%20Life`}>Start a conversation</a>
+          <a class="button button-on-dark" href={`mailto:${EMAILS.investors}?subject=Request%20for%20Sweeyam%20Life%20investor%20brief`}>Request the investor brief</a>
+        </div>
       </div>
     </div>
   </section>
@@ -240,7 +203,15 @@ const description =
 
 <style>
   /* Hero */
-  .navy-hero { padding-block: calc(var(--header-h) + var(--space-section-compact)) var(--space-section-compact); background: var(--navy-deep); }
+  .navy-hero {
+    padding-block: calc(var(--header-h) + var(--space-section-compact)) var(--space-section-compact);
+    background:
+      radial-gradient(60% 70% at 85% 15%, rgba(217, 194, 152, 0.14), transparent 60%),
+      radial-gradient(70% 75% at 8% 100%, rgba(40, 75, 119, 0.65), transparent 62%),
+      radial-gradient(45% 55% at 4% 92%, rgba(217, 194, 152, 0.1), transparent 55%),
+      var(--navy-deep);
+  }
+  .button-row { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
   .hero-grid {
     display: grid;
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
@@ -260,7 +231,9 @@ const description =
 
   /* Promise */
   .promise { padding-block: var(--space-section); }
-  .split-intro { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(2rem, 4vw, 3.5rem); align-items: start; margin-bottom: var(--space-xl); }
+  .investors-mark { font-style: italic; }
+  .opportunity-mark { font-style: italic; color: var(--green); }
+  .split-intro { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; margin-bottom: var(--space-xl); }
   .principle-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
   .principle { padding: var(--space-lg); border: 1px solid var(--hairline); border-radius: var(--radius-lg); background: var(--surface-card); transition: transform var(--dur-normal) var(--ease), box-shadow var(--dur-normal) var(--ease); }
   .principle:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); }
@@ -277,53 +250,112 @@ const description =
   .value-chain-column { position: sticky; top: calc(var(--header-h) + 2rem); }
   .value-chain { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
   .value-step { padding: var(--space-md); border: 1px solid var(--hairline); border-radius: var(--radius-md); background: var(--surface-card); }
-  .value-step h3 { font-size: var(--text-title-sm); margin-bottom: 0.35rem; }
-  .value-step p { margin: 0; font-size: var(--text-body-sm); }
-
-  /* World */
-  .world-section {
-    position: relative;
-    padding-block: var(--space-section);
-    background:
-      radial-gradient(60% 70% at 85% 15%, rgba(217, 194, 152, 0.14), transparent 60%),
-      radial-gradient(50% 60% at 10% 90%, rgba(40, 75, 119, 0.4), transparent 60%),
-      var(--navy-deep);
-  }
-  .world-glass {
-    padding: clamp(1.5rem, 3.5vw, 2.75rem);
-    border: 1px solid rgba(244, 239, 230, 0.16);
-    border-radius: var(--radius-xl);
-    background: rgba(244, 239, 230, 0.06);
-    -webkit-backdrop-filter: blur(18px);
-    backdrop-filter: blur(18px);
-    box-shadow: 0 24px 70px rgba(8, 22, 39, 0.3);
-  }
-  .world-index-header { max-width: 40rem; margin-bottom: var(--space-lg); }
+  .value-step h3 { font-size: var(--text-display-sm); margin-bottom: 0.35rem; }
+  .value-step p { margin: 0; font-size: var(--text-body); }
 
   /* Representations */
   .representations { padding-block: var(--space-section); }
   .narrow { max-width: 44rem; margin-bottom: var(--space-xl); }
-  .representation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
-  .representation-card { border: 1px solid var(--hairline); border-radius: var(--radius-lg); overflow: hidden; background: var(--surface-card); transition: transform var(--dur-normal) var(--ease), box-shadow var(--dur-normal) var(--ease); }
-  .representation-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); }
-  .representation-media { aspect-ratio: 1 / 1; overflow: hidden; background: var(--surface-soft); }
-  .representation-media img { width: 100%; height: 100%; object-fit: cover; }
-  .representation-body { padding: var(--space-lg); }
-  .representation-body h3 { margin-bottom: 0.5rem; }
-  .concept-note { max-width: 46rem; margin-top: var(--space-lg); font-size: var(--text-body-sm); color: var(--muted); }
+  .representation-philosophy {
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--surface-soft);
+    width: 90%;
+  }
+  .representation-philosophy .representation-media {
+    position: relative;
+    display: grid;
+    place-items: start start;
+  }
+  .representation-philosophy img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .philosophy-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    background: linear-gradient(120deg, var(--navy-deep), var(--navy));
+    border-left: 1px solid rgba(217, 194, 152, 0.35);
+    transform: translateX(101%);
+    transition: transform var(--dur-normal) var(--ease);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .representation-philosophy:hover .philosophy-panel,
+  .representation-philosophy:focus-within .philosophy-panel {
+    transform: translateX(0);
+  }
+  .philosophy-title {
+    font-family: var(--font-display);
+    font-size: var(--text-title-lg);
+    color: var(--brass-light);
+    margin-bottom: var(--space-lg);
+  }
+  .philosophy-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .philosophy-list li {
+    color: var(--on-dark-soft);
+    font-size: var(--text-body);
+    line-height: 1.5;
+    padding-block: 0.35rem;
+    border-bottom: 1px solid rgba(244, 239, 230, 0.1);
+  }
+  .philosophy-list li:last-child { border-bottom: 0; }
 
+  .animate { animation-duration: 0.7s; animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48); animation-fill-mode: backwards; }
+  .pop { animation-name: pop; }
+  @keyframes pop {
+    0% { opacity: 0; transform: scale(0.5, 0.5); }
+    100% { opacity: 1; transform: scale(1, 1); }
+  }
+  .slide-left { animation-name: slide-left; }
+  @keyframes slide-left {
+    0% { opacity: 0; transform: translate(-40px, 0); }
+    100% { opacity: 1; transform: translate(0, 0); }
+  }
+  .delay-1 { animation-delay: 0.3s; }
+  .delay-2 { animation-delay: 0.6s; }
+  .delay-3 { animation-delay: 0.9s; }
+  .delay-4 { animation-delay: 1.2s; }
+  .delay-5 { animation-delay: 1.5s; }
+  .delay-6 { animation-delay: 1.8s; }
+  .delay-7 { animation-delay: 2.1s; }
+  .delay-8 { animation-delay: 2.4s; }
+
+  @media (hover: none), (prefers-reduced-motion: reduce) {
+    .philosophy-panel {
+      position: static;
+      width: 100%;
+      transform: none;
+      border-left: 0;
+      border-top: 1px solid rgba(217, 194, 152, 0.35);
+    }
+    .animate { animation: none; opacity: 1; }
+  }
   /* Core values */
   .values-section { padding-block: var(--space-section); background: var(--navy-deep); }
   .values-heading { max-width: 36rem; margin-bottom: var(--space-xl); }
+  .values-mark { font-style: italic; }
   .value-rail { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-md); }
   .value-card { padding: var(--space-lg) var(--space-md); border: 1px solid rgba(244, 239, 230, 0.18); border-radius: var(--radius-lg); background: rgba(255, 253, 249, 0.04); transition: transform var(--dur-normal) var(--ease), border-color var(--dur-normal) var(--ease); }
   .value-card:hover { transform: translateY(-4px); border-color: var(--brass-light); }
   .value-letter { display: block; font-family: var(--font-display); font-size: var(--text-display-sm); color: var(--brass); margin-bottom: var(--space-md); }
-  .value-card h3 { color: var(--on-dark); font-size: var(--text-title-sm); margin-bottom: 0.4rem; }
-  .value-card p { margin: 0; font-size: var(--text-body-sm); color: var(--on-dark-soft); }
+  .value-card h3 { color: var(--on-dark); font-size: var(--text-display-sm); margin-bottom: 0.4rem; }
+  .value-card p { margin: 0; font-size: var(--text-body); color: var(--on-dark-soft); }
 
   /* Scale */
   .scale-section { padding-block: var(--space-section); }
+  .scale-mark { font-style: italic; }
   .scale-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
   .scale-points { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
   .scale-point { padding: var(--space-lg); border: 1px solid var(--hairline); border-radius: var(--radius-lg); background: var(--surface-card); }
@@ -331,16 +363,14 @@ const description =
 
   /* Grow */
   .grow-section { padding-block: var(--space-section); background: var(--surface-soft); }
-  .grow-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
-  .grow-actions { display: flex; flex-direction: column; gap: var(--space-md); align-items: flex-start; }
-  .grow-note { font-size: var(--text-body-sm); }
+  .grow-mark { font-style: italic; color: var(--green); }
 
   @media (max-width: 62rem) {
-    .hero-grid, .split-intro, .opportunity-layout, .scale-grid, .grow-grid { grid-template-columns: 1fr; }
-    .principle-grid, .value-rail, .representation-grid, .value-chain, .scale-points { grid-template-columns: 1fr 1fr; }
+    .hero-grid, .split-intro, .opportunity-layout, .scale-grid { grid-template-columns: 1fr; }
+    .principle-grid, .value-rail, .value-chain, .scale-points { grid-template-columns: 1fr 1fr; }
     .value-chain-column { position: static; }
   }
   @media (max-width: 48rem) {
-    .principle-grid, .value-rail, .representation-grid, .value-chain, .scale-points { grid-template-columns: 1fr; }
+    .principle-grid, .value-rail, .value-chain, .scale-points { grid-template-columns: 1fr; }
   }
 </style>

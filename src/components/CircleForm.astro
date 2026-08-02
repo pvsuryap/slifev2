@@ -10,49 +10,71 @@ const renderedNotice = t.notice
   .replace('{policy}', t.policyKeyword);
 ---
 
-<div class="circle-form-shell">
-  <h3>Join the Sweeyam Circle</h3>
-  <p>Occasional notes on our launch, product worlds, founder stories and the making of Sweeyam Life.</p>
+<div class="circle-form-shell" data-circle>
+  <button type="button" class="circle-toggle" data-circle-toggle aria-expanded="false" aria-controls="circle-panel">
+    Join the Sweeyam Circle
+  </button>
 
-  <form class="sweeyam-form" action={GOOGLE_FORMS.action} method="POST" target="_blank" data-dpdp-form novalidate>
-    <div class="sweeyam-input-group">
-      <label for="entry_name">Name</label>
-      <input type="text" id="entry_name" name={GOOGLE_FORMS.entry.name} placeholder="Your full name" autocomplete="name" required />
-      <p class="field-error" data-error-for="entry_name" hidden></p>
-    </div>
-    <div class="sweeyam-input-group">
-      <label for="entry_mobile">Mobile Number</label>
-      <input type="tel" id="entry_mobile" name={GOOGLE_FORMS.entry.mobile} placeholder="e.g. 9848271543" autocomplete="tel" pattern="^[6-9]\d{9}$" title="Please enter a valid 10-digit Indian mobile number" required />
-      <p class="field-error" data-error-for="entry_mobile" hidden></p>
-    </div>
-    <div class="sweeyam-input-group">
-      <label for="entry_email">Email Address</label>
-      <input type="email" id="entry_email" name={GOOGLE_FORMS.entry.email} placeholder="you@example.com" autocomplete="email" required />
-      <p class="field-error" data-error-for="entry_email" hidden></p>
-    </div>
+  <div class="circle-panel" id="circle-panel" data-circle-panel hidden>
+    <p>Occasional notes on our launch, product worlds, founder stories and the making of Sweeyam Life.</p>
 
-    <div class="sweeyam-form-row">
-      <label class="dpdp-label" for="dpdp-lang">Notice Language</label>
-      <select id="dpdp-lang" class="sweeyam-select" data-dpdp-select>
-        {DPDP_LANGUAGES.map((l) => <option value={l.code}>{l.label}</option>)}
-      </select>
-    </div>
+    <form class="sweeyam-form" action={GOOGLE_FORMS.action} method="POST" target="_blank" data-dpdp-form novalidate>
+      <div class="sweeyam-input-group">
+        <label for="entry_name">Name</label>
+        <input type="text" id="entry_name" name={GOOGLE_FORMS.entry.name} placeholder="Your full name" autocomplete="name" required />
+        <p class="field-error" data-error-for="entry_name" hidden></p>
+      </div>
+      <div class="sweeyam-input-group">
+        <label for="entry_mobile">Mobile Number</label>
+        <input type="tel" id="entry_mobile" name={GOOGLE_FORMS.entry.mobile} placeholder="e.g. 9848271543" autocomplete="tel" pattern="^[6-9]\d{9}$" title="Please enter a valid 10-digit Indian mobile number" required />
+        <p class="field-error" data-error-for="entry_mobile" hidden></p>
+      </div>
+      <div class="sweeyam-input-group">
+        <label for="entry_email">Email Address</label>
+        <input type="email" id="entry_email" name={GOOGLE_FORMS.entry.email} placeholder="you@example.com" autocomplete="email" required />
+        <p class="field-error" data-error-for="entry_email" hidden></p>
+      </div>
 
-    <div class="sweeyam-checkbox-group">
-      <input type="checkbox" id="entry_consent" name={GOOGLE_FORMS.entry.consent} value={consentValue} required />
-      <label for="entry_consent" id="consent-text" data-dpdp-consent>{t.consent}</label>
-    </div>
+      <div class="sweeyam-form-row">
+        <label class="dpdp-label" for="dpdp-lang">Notice Language</label>
+        <select id="dpdp-lang" class="sweeyam-select" data-dpdp-select>
+          {DPDP_LANGUAGES.map((l) => <option value={l.code}>{l.label}</option>)}
+        </select>
+      </div>
 
-    <button type="submit" class="button button-primary sweeyam-submit" data-dpdp-submit>Join the Circle</button>
-    <p class="form-status" role="status" aria-live="polite" data-dpdp-status hidden></p>
-    <p class="circle-form-notice" id="notice-text" data-dpdp-notice>{renderedNotice}</p>
-  </form>
+      <div class="sweeyam-checkbox-group">
+        <input type="checkbox" id="entry_consent" name={GOOGLE_FORMS.entry.consent} value={consentValue} required />
+        <label for="entry_consent" id="consent-text" data-dpdp-consent>{t.consent}</label>
+      </div>
 
-  <p class="circle-form-foot">You can withdraw your consent at any time by emailing <a href={`mailto:${EMAILS.compliance}`}>{EMAILS.compliance}</a>. Read our <a href="/privacy-policy/">Privacy Policy</a>.</p>
+      <button type="submit" class="button button-brass sweeyam-submit" data-dpdp-submit>Join the Circle</button>
+      <p class="form-status" role="status" aria-live="polite" data-dpdp-status hidden></p>
+      <p class="circle-form-notice" id="notice-text" data-dpdp-notice>{renderedNotice}</p>
+    </form>
+  </div>
 </div>
 
 <script>
   import { DPDP_TRANSLATIONS, type LangCode } from '../lib/dpdp';
+
+  const shell = document.querySelector<HTMLElement>('[data-circle]');
+  if (shell) {
+    const toggle = shell.querySelector<HTMLButtonElement>('[data-circle-toggle]');
+    const panel = shell.querySelector<HTMLElement>('[data-circle-panel]');
+
+    toggle?.addEventListener('click', () => {
+      if (!panel) return;
+      const open = panel.hidden;
+      panel.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open) {
+        shell.classList.add('open');
+        panel.querySelector<HTMLElement>('input')?.focus();
+      } else {
+        shell.classList.remove('open');
+      }
+    });
+  }
 
   const form = document.querySelector<HTMLFormElement>('[data-dpdp-form]');
   if (form) {
@@ -80,7 +102,17 @@ const renderedNotice = t.notice
       setLang((e.target as HTMLSelectElement).value);
     });
 
+    setLang(select?.value ?? 'en');
+
     const inputs = Array.from(form.querySelectorAll<HTMLInputElement>('input'));
+    const mobile = form.querySelector<HTMLInputElement>('#entry_mobile');
+
+    const normalizeMobile = () => {
+      if (!mobile) return;
+      const value = mobile.value.trim().replace(/[\s-]/g, '');
+      const stripped = value.replace(/^\+91/, '').replace(/^0(?=\d{10}$)/, '');
+      if (stripped !== value) mobile.value = stripped;
+    };
 
     const showError = (input: HTMLInputElement) => {
       const error = form.querySelector<HTMLElement>(`[data-error-for="${input.id}"]`);
@@ -113,6 +145,7 @@ const renderedNotice = t.notice
     });
 
     form.addEventListener('submit', (e) => {
+      normalizeMobile();
       const valid = form.checkValidity();
       if (!valid) {
         e.preventDefault();
@@ -133,9 +166,32 @@ const renderedNotice = t.notice
 </script>
 
 <style>
-  .circle-form-shell { max-width: 26rem; }
-  .circle-form-shell h3 { color: var(--on-dark); }
-  .circle-form-shell > p { color: var(--on-dark-soft); font-size: var(--text-body-sm); }
+  .circle-form-shell { max-width: 44rem; }
+  .circle-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    border: 1px solid var(--brass-light);
+    border-radius: var(--radius-lg);
+    background: transparent;
+    color: var(--brass-light);
+    font-family: var(--font-display);
+    font-size: var(--text-title-lg);
+    cursor: pointer;
+    transition: background var(--dur-normal) var(--ease), color var(--dur-normal) var(--ease), border-color var(--dur-normal) var(--ease);
+  }
+  .circle-toggle:hover { background: var(--brass-light); color: var(--navy-deep); border-color: var(--brass-light); }
+
+  .circle-panel {
+    margin-top: var(--space-md);
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius-lg);
+    background: rgba(26, 54, 93, 0.35);
+  }
+  .circle-panel > p { color: var(--on-dark-soft); font-size: var(--text-body-sm); }
   .circle-form-foot { font-size: var(--text-caption); color: var(--on-dark-soft); }
   .circle-form-foot a { color: var(--brass-light); text-decoration: underline; text-underline-offset: 2px; }
 </style>

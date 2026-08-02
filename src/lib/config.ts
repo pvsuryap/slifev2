@@ -64,6 +64,17 @@ export const NAV_CTA: NavItem = { label: 'Grow With Us', href: '/#grow', cta: tr
 
 export const FOOTER_COLUMNS = [
   {
+    heading: 'Company',
+    links: [
+      { label: 'Core Values', href: '/investors/#core-values' },
+      { label: 'Press', href: `mailto:${EMAILS.press}` },
+      { label: 'Marketing', href: `mailto:${EMAILS.marketing}` },
+      { label: 'Support', href: `mailto:${EMAILS.support}` },
+      { label: 'Privacy Policy', href: '/privacy-policy/' },
+      { label: 'Terms of Use', href: '/terms-of-use/' },
+    ],
+  },
+  {
     heading: 'Explore',
     links: [
       { label: 'Our Promise', href: '/#promise' },
@@ -77,20 +88,9 @@ export const FOOTER_COLUMNS = [
     links: [
       { label: 'Investors & Strategic Partners', href: '/investors/' },
       { label: 'Suppliers & Artisans', href: `mailto:${EMAILS.partners}` },
-      { label: 'R&D & Formulation Partners', href: `mailto:${EMAILS.partners}` },
+      { label: 'R&D Partners', href: `mailto:${EMAILS.partners}` },
       { label: 'Women Entrepreneurs', href: `mailto:${EMAILS.partners}` },
       { label: 'Contact', href: '/contact/' },
-    ],
-  },
-  {
-    heading: 'Company',
-    links: [
-      { label: 'Core Values', href: '/investors/#core-values' },
-      { label: 'Press', href: `mailto:${EMAILS.press}` },
-      { label: 'Marketing', href: `mailto:${EMAILS.marketing}` },
-      { label: 'Support', href: `mailto:${EMAILS.support}` },
-      { label: 'Privacy Policy', href: '/privacy-policy/' },
-      { label: 'Terms of Use', href: '/terms-of-use/' },
     ],
   },
 ] as const;

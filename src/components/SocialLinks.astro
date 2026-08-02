@@ -3,9 +3,12 @@ import { SOCIALS } from '../lib/config';
 
 interface Props {
   variant?: 'default' | 'mobile';
+  omitWhatsapp?: boolean;
 }
 
-const { variant = 'default' } = Astro.props;
+const { variant = 'default', omitWhatsapp = false } = Astro.props;
+
+const socials = omitWhatsapp ? SOCIALS.filter((s) => !s.whatsapp) : SOCIALS;
 
 const icons: Record<string, string> = {
   Instagram:
@@ -29,7 +32,7 @@ const whatsappClass = (isWa: boolean) => (isWa ? ' whatsapp' : '');
 {
   variant === 'mobile' ? (
     <div class="mobile-socials" aria-label="Sweeyam Life social media">
-      {SOCIALS.map((s) => (
+      {socials.map((s) => (
         <a
           class={`${iconClass}${whatsappClass(!!s.whatsapp)}`}
           href={s.url}
@@ -46,7 +49,7 @@ const whatsappClass = (isWa: boolean) => (isWa ? ' whatsapp' : '');
     </div>
   ) : (
     <div class="social-links" aria-label="Sweeyam Life social media">
-      {SOCIALS.map((s) => (
+      {socials.map((s) => (
         <a
           class={`${iconClass}${whatsappClass(!!s.whatsapp)}`}
           href={s.url}
@@ -69,8 +72,8 @@ const whatsappClass = (isWa: boolean) => (isWa ? ' whatsapp' : '');
   .social-link {
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
     border-radius: var(--radius-full, 9999px);
     border: 1px solid var(--line-dark);
     color: var(--on-dark-soft);
@@ -78,14 +81,14 @@ const whatsappClass = (isWa: boolean) => (isWa ? ' whatsapp' : '');
   }
   .social-link:hover { color: var(--on-dark); border-color: var(--brass-light); transform: translateY(-2px); }
   .social-link.whatsapp:hover { color: var(--brass-light); }
-  .social-link svg { width: 20px; height: 20px; fill: currentColor; }
+  .social-link svg { width: 24px; height: 24px; fill: currentColor; }
 
   .mobile-socials { display: flex; flex-wrap: wrap; gap: 0.6rem; }
   .mobile-social-link {
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     border: 1px solid var(--line-dark);
     color: var(--on-dark);
@@ -93,5 +96,5 @@ const whatsappClass = (isWa: boolean) => (isWa ? ' whatsapp' : '');
   }
   .mobile-social-link:hover { background: var(--navy); border-color: var(--navy); color: #fff; transform: translateY(-2px); }
   .mobile-social-link.whatsapp:hover { background: var(--green); border-color: var(--green); color: #fff; }
-  .mobile-social-link svg { width: 20px; height: 20px; fill: currentColor; }
+  .mobile-social-link svg { width: 24px; height: 24px; fill: currentColor; }
 </style>

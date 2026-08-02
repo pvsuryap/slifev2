@@ -7,11 +7,9 @@ import CircleForm from './CircleForm.astro';
 <footer id="footer">
   <div class="shell footer-top">
     <div class="footer-brand">
-      <div class="footer-logo" aria-hidden="true">
-        <img src="/images/Sweeyam_Life_Logo_white.png" alt="" width="512" height="512" loading="lazy" />
-      </div>
-      <p class="footer-tagline">Premium lifestyle and self-care brand; Rooted in nature, Built thoughtfully, Products that are <span class="footer-highlight">Kind to you and the Earth</span></p>
-      <SocialLinks />
+      <a class="footer-logo" href="/" aria-label="Sweeyam Life — home">
+        <img src="/images/Sweeyam_Life_Logo_white.png" alt="Sweeyam Life" width="512" height="512" loading="lazy" />
+      </a>
     </div>
 
     {FOOTER_COLUMNS.map((col) => (
@@ -28,12 +26,14 @@ import CircleForm from './CircleForm.astro';
 
   <div class="stripe thin on-dark"><span class="s1"></span><span class="s2"></span><span class="s3"></span><span class="s4"></span></div>
   <div class="footer-bottom">
+    <SocialLinks />
     <p>© {new Date().getFullYear()} {SITE.name}. Crafted with care, intention and radical honesty.</p>
   </div>
 </footer>
 
 <style>
   footer { background: var(--navy-deep); color: var(--on-dark-soft); }
+  footer .button { box-shadow: none; }
 
   .footer-top {
     display: grid;
@@ -42,33 +42,37 @@ import CircleForm from './CircleForm.astro';
     padding-block: var(--space-xxl);
   }
 
-  .footer-brand { grid-column: span 4; }
-  .footer-col { grid-column: span 2; }
-  .circle-form-shell { grid-column: span 4; }
+  .footer-brand { grid-column: 1 / -1; margin-bottom: var(--space-lg); }
+  .footer-col { grid-column: span 3; }
+  .circle-form-shell { grid-column: span 3; justify-self: end; }
 
-  .footer-logo { width: 2.75rem; margin-bottom: var(--space-md); }
-  .footer-logo img { width: 100%; height: auto; object-fit: contain; }
-  .footer-tagline { color: var(--on-dark-soft); font-size: var(--text-body-sm); max-width: 24rem; }
-  .footer-highlight { color: var(--brass-light); }
+  .footer-logo { display: block; width: 3rem; }  .footer-logo img { width: 100%; height: auto; object-fit: contain; }
 
   .footer-col h4 { margin-bottom: var(--space-md); color: var(--on-dark); font-family: var(--font-body); font-size: var(--text-caption-up); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
   .footer-col a { display: block; margin-bottom: 0.6rem; font-size: var(--text-body-sm); color: var(--on-dark-soft); transition: color var(--dur-quick) var(--ease); }
   .footer-col a:hover { color: var(--brass-light); }
 
-  .footer-top .social-links { margin-top: var(--space-md); }
-
   .stripe { margin-top: 0; }
-  .footer-bottom { padding: var(--space-md) var(--page-pad) var(--space-lg); text-align: center; border-top: 1px solid var(--line-dark); }
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--page-pad) var(--space-lg);
+    border-top: 1px solid var(--line-dark);
+  }
   .footer-bottom p { margin: 0; font-size: var(--text-caption); color: var(--white); letter-spacing: 0.02em; }
+  .footer-bottom .social-links { margin: 0; }
 
   @media (max-width: 72rem) {
-    .footer-brand { grid-column: span 6; }
-    .footer-col { grid-column: span 3; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-col { grid-column: span 6; }
     .circle-form-shell { grid-column: span 6; }
   }
 
   @media (max-width: 48rem) {
     .footer-top { grid-template-columns: 1fr; }
     .footer-brand, .footer-col, .circle-form-shell { grid-column: 1 / -1; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
   }
 </style>

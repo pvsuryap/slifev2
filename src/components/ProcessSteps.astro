@@ -58,14 +58,21 @@ const { eyebrow, title, steps = PROCESS_STEPS } = Astro.props;
     };
 
     steps.forEach((step, index) => {
-      step.addEventListener('mouseenter', () => setStep(index));
-      step.addEventListener('click', () => setStep(index));
-      step.addEventListener('focusin', () => setStep(index));
+      step.addEventListener('mouseenter', () => { setStep(index); restart(); });
+      step.addEventListener('click', () => { setStep(index); restart(); });
+      step.addEventListener('focusin', () => { setStep(index); restart(); });
     });
 
     if (!touchLayout.matches) {
-      card.addEventListener('mouseleave', () => setStep(0));
+      card.addEventListener('mouseleave', () => { setStep(0); restart(); });
     }
+
+    let timer = 0;
+    const restart = () => {
+      window.clearInterval(timer);
+      timer = window.setInterval(() => setStep(current + 1), 3000);
+    };
+    restart();
   }
 </script>
 
@@ -74,9 +81,13 @@ const { eyebrow, title, steps = PROCESS_STEPS } = Astro.props;
 
   .process-card {
     display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
     gap: clamp(2rem, 5vw, 4rem);
     align-items: stretch;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
   }
 
   .process-heading { margin-bottom: var(--space-md); }
@@ -98,25 +109,26 @@ const { eyebrow, title, steps = PROCESS_STEPS } = Astro.props;
   .p-num { font-family: var(--font-display); font-size: var(--text-caption-up); color: var(--brass); letter-spacing: 0.05em; }
 
   .p-copy h3 { margin: 0 0 0.25rem; font-size: var(--text-title-lg); color: var(--ink); }
-  .p-copy p { margin: 0; font-size: var(--text-body-sm); color: var(--body); max-width: 34rem; }
+  .p-copy p { margin: 0; font-size: var(--text-body); color: var(--body); }
 
   .process-image-stage {
     position: relative;
-    aspect-ratio: 4 / 5;
-    max-height: 30rem;
-    width: 100%;
-    align-self: center;
+    width: 79%;
+    height: 90%;
+    min-height: 21.6rem;
+    align-self: end;
+    justify-self: end;
+    border: 1px solid var(--hairline);
     border-radius: var(--radius-xl);
     overflow: hidden;
-    background: var(--navy-deep);
     box-shadow: var(--shadow-card);
   }
-  .process-img-layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.04); transition: opacity var(--dur-slow) var(--ease), transform 1.2s var(--ease); }
+  .process-img-layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transform: scale(1.04); transition: opacity var(--dur-slow) var(--ease), transform 1.2s var(--ease); }
   .process-img-layer.active { opacity: 1; transform: scale(1); }
 
   @media (max-width: 62rem) {
     .process-card { grid-template-columns: 1fr; }
-    .process-image-stage { order: -1; aspect-ratio: 16 / 9; max-height: 16rem; }
+    .process-image-stage { order: -1; aspect-ratio: 16 / 9; max-height: 16rem; height: auto; min-height: 0; }
     .process-step { cursor: default; }
   }
 </style>

@@ -105,6 +105,7 @@ main:focus { outline: none; }
   letter-spacing: 0.01em;
   text-decoration: none;
   cursor: pointer;
+  box-shadow: 0 4px 14px rgba(16, 35, 61, 0.16);
   transition: transform var(--dur-normal) var(--ease), background var(--dur-normal) var(--ease), color var(--dur-normal) var(--ease), border-color var(--dur-normal) var(--ease), box-shadow var(--dur-normal) var(--ease);
 }
 .button:active { transform: translateY(0); }
@@ -165,12 +166,12 @@ main:focus { outline: none; }
 
 /* ---- Stripe brand bar ---- */
 
-.stripe { display: flex; height: 8px; overflow: hidden; border-radius: var(--radius-pill); }
+.stripe { display: flex; height: 8px; overflow: hidden; border-radius: var(--radius-pill); border: 0.5px solid var(--brass-light); }
 .stripe span { flex: 1; }
-.stripe .s1 { background: var(--navy); }
-.stripe .s2 { background: var(--brass); }
+.stripe .s1 { background: var(--white); }
+.stripe .s2 { background: var(--brown); }
 .stripe .s3 { background: var(--green); }
-.stripe .s4 { background: var(--brown); }
+.stripe .s4 { background: var(--navy); }
 
 /* ---- WhatsApp float ---- */
 
@@ -199,8 +200,7 @@ main:focus { outline: none; }
 .circle-form-shell > p { color: var(--on-dark-soft); font-size: var(--text-body-sm); }
 
 .sweeyam-form { display: grid; gap: var(--space-md); }
-.sweeyam-input-group { display: grid; gap: 0.4rem; }
-.sweeyam-input-group label { font-size: var(--text-caption-up); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brass-light); }
+.sweeyam-input-group { display: grid; gap: 0.4rem; }.sweeyam-input-group label { font-size: var(--text-caption-up); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brass-light); }
 .sweeyam-input-group input {
   width: 100%;
   min-height: 44px;

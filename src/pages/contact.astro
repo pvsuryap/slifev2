@@ -11,63 +11,70 @@ const waHref = `https://wa.me/${CONTACT.whatsappNumber}?text=${CONTACT.whatsappT
 <Base title="Contact | Sweeyam Life" description={description}>
   <section class="page-hero" id="top">
     <div class="shell">
-      <p class="eyebrow">Connect</p>
+      <p class="eyebrow on-dark">Connect</p>
       <h1 class="hero-title">We would love to hear from you.</h1>
     </div>
   </section>
 
   <main class="card-stack-section" id="main-content" tabindex="-1">
     <div class="shell">
-      <article class="unified-card content reveal">
-        <h2 class="section-title">Start a conversation</h2>
-        <p>
-          We welcome conversations with customers, partners, suppliers, artisans, formulation thinkers, investors and people who believe in building a kinder everyday.
-        </p>
-
-        <div class="contact-grid">
-          <section class="contact-card">
-            <p class="eyebrow">Email</p>
-            <h2>For general enquiries</h2>
-            <p>Send us a note and our team will get back to you as soon as reasonably possible.</p>
-            <a class="contact-action" href={`mailto:${EMAILS.connect}`}>{EMAILS.connect}</a>
-          </section>
-          <section class="contact-card">
-            <p class="eyebrow">WhatsApp</p>
-            <h2>Message the Sweeyam Life team</h2>
-            <p>For quick questions, you can reach us on WhatsApp.</p>
-            <a class="contact-action" href={waHref} target="_blank" rel="noopener">{CONTACT.phoneDisplay}</a>
-          </section>
-        </div>
-
-        <div class="connect-block">
-          <h2>Connect with Sweeyam Life</h2>
-          <SocialLinks variant="default" />
-        </div>
-
-        <div class="connect-block">
-          <h2>Response expectations</h2>
-          <p>
-            We are currently preparing for launch. Messages are reviewed by the Sweeyam Life team, and we will respond as soon as reasonably possible. Please do not send confidential formulations, financial information or other sensitive material through public social channels.
-          </p>
-          <div class="notice">
-            <strong>Business enquiries:</strong> Include a clear subject line and a short summary so we can direct your message appropriately.
-          </div>
-        </div>
-      </article>
+      <div class="contact-grid reveal">
+        <section class="contact-card">
+          <span class="contact-icon-wrap">
+            <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+          </span>
+          <p class="eyebrow">Email</p>
+          <h2>For general enquiries</h2>
+          <a class="contact-action" href={`mailto:${EMAILS.connect}`}>{EMAILS.connect}</a>
+        </section>
+        <section class="contact-card">
+          <span class="contact-icon-wrap">
+            <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.52 3.48A11.8 11.8 0 0 0 1.96 17.7L.3 23.75l6.2-1.63A11.78 11.78 0 0 0 12 23.5h.01A11.8 11.8 0 0 0 20.52 3.48zM12 21.5a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.68.97.98-3.59-.23-.37A9.8 9.8 0 1 1 12 21.5zm5.38-7.34c-.29-.15-1.73-.85-2-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.94 1.14-.17.2-.35.22-.64.07-.29-.15-1.23-.45-2.34-1.44-.86-.77-1.45-1.72-1.62-2.01-.17-.29-.02-.45.13-.59.13-.13.29-.35.44-.52.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.29-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.7.63.71.23 1.36.19 1.87.12.57-.08 1.73-.71 1.98-1.39.24-.68.24-1.27.17-1.39-.08-.12-.27-.19-.56-.34z" />
+            </svg>
+          </span>
+          <p class="eyebrow">WhatsApp</p>
+          <h2>Message the Sweeyam Life team</h2>
+          <a class="contact-action" href={waHref} target="_blank" rel="noopener">{CONTACT.phoneDisplay}</a>
+        </section>
+        <section class="contact-card">
+          <span class="contact-icon-wrap">
+            <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M23 3H1a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h22a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-11 9L1 5h22l-11 7zM2 5.8V18l6-4-6-8.2zm4.2 9.4L2 19.2V18l-4.2 2.8zM12 13.2 22 5H2l10 8.2z" />
+            </svg>
+          </span>
+          <p class="eyebrow">Social</p>
+          <h2>Follow us on</h2>
+          <SocialLinks variant="default" omitWhatsapp />
+        </section>
+      </div>
     </div>
   </main>
 </Base>
 
 <style>
-  .page-hero { padding-block: calc(var(--header-h) + var(--space-section-compact)) var(--space-section-compact); }
-  .hero-title { max-width: 22ch; }
+  .page-hero {
+    padding-block: calc(var(--header-h) + var(--space-section-compact)) var(--space-section-compact);
+    background:
+      radial-gradient(60% 70% at 85% 15%, rgba(217, 194, 152, 0.14), transparent 60%),
+      radial-gradient(70% 75% at 8% 100%, rgba(40, 75, 119, 0.65), transparent 62%),
+      radial-gradient(45% 55% at 4% 92%, rgba(217, 194, 152, 0.1), transparent 55%),
+      var(--navy-deep);
+  }
+  .hero-title { max-width: 22ch; color: var(--on-dark); }
 
-  .content > .section-title { max-width: 30ch; }
-  .content > p { max-width: 46rem; }
+  .card-stack-section {
+    padding-block: var(--space-lg) var(--space-section-compact);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-block: var(--space-xl); }
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
   .contact-card {
-    padding: var(--space-lg);
+    padding: var(--space-md);
     border: 1px solid var(--hairline);
     border-radius: var(--radius-lg);
     background: var(--surface-card);
@@ -75,11 +82,20 @@ const waHref = `https://wa.me/${CONTACT.whatsappNumber}?text=${CONTACT.whatsappT
     flex-direction: column;
     align-items: flex-start;
   }
-  .contact-card h2 { font-size: var(--text-title-lg); margin-bottom: 0.5rem; }
+  .contact-card h2 { font-size: var(--text-title-lg); margin-bottom: 0.4rem; }
   .contact-card p { font-size: var(--text-body-sm); }
+  .contact-card .social-links { margin-top: var(--space-sm); }
+  .contact-card .social-link {
+    border: 1px solid var(--hairline);
+    color: var(--body-strong);
+  }
+  .contact-card .social-link:hover {
+    color: var(--brass-deep);
+    border-color: var(--brass-light);
+  }
+  .contact-card .social-link.whatsapp:hover { color: var(--green); }
   .contact-action {
-    margin-top: auto;
-    padding-top: var(--space-md);
+    margin-top: var(--space-sm);
     color: var(--brass-text);
     font-weight: 600;
     text-decoration: underline;
@@ -87,22 +103,24 @@ const waHref = `https://wa.me/${CONTACT.whatsappNumber}?text=${CONTACT.whatsappT
     text-underline-offset: 3px;
     word-break: break-word;
   }
-  .contact-action:hover { color: var(--brass-deep); }
-
-  .connect-block { margin-top: var(--space-xxl); }
-  .connect-block h2 { font-size: var(--text-title-lg); margin-bottom: var(--space-md); }
-  .connect-block > p { max-width: 46rem; }
-
-  .notice {
-    margin-top: var(--space-md);
-    padding: var(--space-md) var(--space-lg);
-    border-left: 3px solid var(--brass);
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
-    background: var(--surface-soft);
-    font-size: var(--text-body-sm);
+  .contact-icon-wrap {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: var(--space-md);
+    border-radius: var(--radius-full, 9999px);
+    border: 1px solid var(--hairline);
     color: var(--body-strong);
-    max-width: 46rem;
+    flex-shrink: 0;
+    transition: color var(--dur-normal) var(--ease), border-color var(--dur-normal) var(--ease);
   }
+  .contact-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+  .contact-action:hover { color: var(--brass-deep); }
 
   @media (max-width: 48rem) {
     .contact-grid { grid-template-columns: 1fr; }

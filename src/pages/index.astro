@@ -65,7 +65,7 @@ const orgJsonLd = {
         <div class="promise-heading">
           <p class="eyebrow">Our Promise</p>
           <h2 class="section-title">
-            Everyday care should do more than serve a purpose. <span class="mark promise-mark-italic">- it should carry meaning.</span>
+            Everyday care should do more than serve a purpose. <span class="mark promise-mark-italic">—&nbsp;It should carry meaning.</span>
           </h2>
         </div>
         <div class="promise-copy">
@@ -89,13 +89,18 @@ const orgJsonLd = {
   <section class="world-section on-dark" id="world">
     <div class="shell">
       <div class="world-glass reveal">
-        <div class="world-index-header">
-          <p class="eyebrow on-dark">Our World</p>
-          <h2 class="section-title on-dark">
-            Anchored in nature and shaped with intention to — <span class="mark on-dark mark-italic">bring joy, meaning and sustainability.</span>
-          </h2>
+        <div class="world-layout">
+          <div class="world-index-header">
+            <p class="eyebrow on-dark">Our World</p>
+            <h2 class="section-title on-dark">
+              Anchored in nature and shaped with intention to — <span class="mark on-dark mark-italic">bring joy, meaning and sustainability.</span>
+            </h2>
+            <p class="world-index-intro">
+              We create products for self, home and everyday living — purposeful, effective, thoughtfully designed and responsibly made. Every product has a clear reason to exist, earning its place in your life through performance, experience and integrity.
+            </p>
+          </div>
+          <WorldIndex />
         </div>
-        <WorldIndex />
       </div>
     </div>
   </section>
@@ -103,7 +108,7 @@ const orgJsonLd = {
   <!-- How We Create -->
   <ProcessSteps
     eyebrow="How We Create"
-    title={<>From intention to creation, our process is shaped by care, craft and <span class="mark">radical honesty.</span></>}
+    title={<>From intention to creation, our process is shaped by <span class="mark process-mark">—&nbsp; care, craft and radical honesty.</span></>}
   />
 
   <!-- Behind Sweeyam Life -->
@@ -116,7 +121,7 @@ const orgJsonLd = {
         </div>
 
         <p class="founder-intro">
-          At the heart of Sweeyam Life is a women-led community: entrepreneurs, creators, operators, formulation thinkers and artisans bringing different forms of intelligence into one shared purpose.
+          At the heart of Sweeyam Life is a women-led community of entrepreneurs, innovators, formulators and artisans, bringing different forms of intelligence together with one shared purpose — to return to self, to nature and to meaningful everyday rituals.
         </p>
 
         <div class="founder-grid">
@@ -143,12 +148,12 @@ const orgJsonLd = {
   </section>
 
   <!-- Grow With Us -->
-  <section class="card-stack-section" id="grow">
+  <section class="card-stack-section grow-section" id="grow">
     <div class="shell">
-      <div class="unified-card reveal">
+      <div class="reveal">
         <div class="behind-heading">
           <p class="eyebrow">Grow With Us</p>
-          <h2 class="section-title">Building a kinder everyday, together.</h2>
+          <h2 class="section-title grow-title">Building a kinder everyday, <span class="mark grow-together">together.</span></h2>
         </div>
 
         <div class="grow-cards">
@@ -157,8 +162,8 @@ const orgJsonLd = {
             <p>Makers and partners who share our standard for care, craft and responsibility.</p>
           </a>
           <a href={`mailto:${EMAILS.partners}`} class="grow-card">
-            <h3>R&amp;D &amp; Formulation Partners</h3>
-            <p>Formulation thinkers helping translate ancient wisdom into purpose-built products.</p>
+            <h3>R&amp;D Partners</h3>
+            <p>Product designers &amp; Formulation partners helping translate ancient wisdom and science into purpose-built products</p>
           </a>
           <a href={`mailto:${EMAILS.partners}`} class="grow-card">
             <h3>Women Entrepreneurs</h3>
@@ -290,7 +295,8 @@ const orgJsonLd = {
     align-items: flex-start;
   }
   .promise-heading { margin-bottom: var(--space-md); }
-  .promise-mark-italic { font-style: italic; }
+  .promise-mark-italic { font-style: italic; color: var(--brass-deep); }
+  .process-mark { font-style: italic; }
   .promise-copy p { max-width: 42rem; margin-bottom: var(--space-md); }
   .promise-visual { position: relative; z-index: 0; }
 
@@ -300,6 +306,7 @@ const orgJsonLd = {
     aspect-ratio: 3 / 2;
     border-radius: var(--radius-xl);
     overflow: hidden;
+    box-shadow: var(--shadow-card);
     transform: scale(var(--para-scale, 1));
     transition: transform 0.05s linear;
   }
@@ -313,7 +320,8 @@ const orgJsonLd = {
     padding-block: var(--space-section);
     background:
       radial-gradient(60% 70% at 85% 15%, rgba(217, 194, 152, 0.14), transparent 60%),
-      radial-gradient(50% 60% at 10% 90%, rgba(40, 75, 119, 0.4), transparent 60%),
+      radial-gradient(70% 75% at 8% 100%, rgba(40, 75, 119, 0.65), transparent 62%),
+      radial-gradient(45% 55% at 4% 92%, rgba(217, 194, 152, 0.1), transparent 55%),
       var(--navy-deep);
   }
   .world-glass {
@@ -325,22 +333,41 @@ const orgJsonLd = {
     backdrop-filter: blur(18px);
     box-shadow: 0 24px 70px rgba(8, 22, 39, 0.3);
   }
-  .world-index-header { max-width: 44rem; margin-bottom: var(--space-lg); }
+  .world-index-header { max-width: 44rem; }
   .mark-italic { font-style: italic; }
+  .world-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+  }
+  .world-index-header { display: grid; justify-items: start; }
+  .world-index-intro { max-width: 32rem; color: var(--on-dark-soft); font-size: var(--text-body); margin-top: var(--space-md); }
+  @media (max-width: 64rem) {
+    .world-layout { grid-template-columns: 1fr; }
+  }
 
   /* Behind */
-  .behind-section { padding-top: var(--space-section); padding-bottom: var(--space-section-compact); }
+  .behind-section {
+    padding-block: var(--space-section);
+    background:
+      radial-gradient(70% 80% at 15% 10%, rgba(255, 253, 249, 0.35), transparent 55%),
+      linear-gradient(180deg, var(--brass-light) 0%, var(--brass) 100%);
+  }
   .behind-heading { max-width: 36rem; margin-bottom: var(--space-lg); }
-  .founder-intro { max-width: 42rem; font-size: var(--text-body); margin-bottom: var(--space-xl); }
+  .founder-intro { max-width: 64rem; font-size: var(--text-body); margin-bottom: var(--space-xl); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
   .founder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); }
   .founder-card { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: clamp(1rem, 2vw, 1.75rem); align-items: start; }
-  .founder-photo { border-radius: var(--radius-lg); overflow: hidden; background: var(--surface-card); }
-  .founder-photo img { width: 100%; height: auto; object-fit: contain; }
+  .founder-photo { border-radius: var(--radius-lg); overflow: hidden; background: var(--surface-card); aspect-ratio: 3 / 4; }
+  .founder-photo img { width: 100%; height: 100%; object-fit: cover; }
   .founder-copy h3 { margin-bottom: 0.25rem; }
-  .founder-copy p { font-size: var(--text-body-sm); margin-bottom: 0; }
+  .founder-copy p { font-size: var(--text-body); margin-bottom: 0; padding-top: var(--space-sm); }
 
   /* Grow */
+  .grow-section { padding-block: var(--space-section); position: relative; background: transparent; }
+  .grow-title { max-width: none; }
+  .grow-together { font-style: italic; color: var(--green); }
   .grow-cards { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-bottom: var(--space-xl); }
   .grow-card {
     display: block;
@@ -352,9 +379,9 @@ const orgJsonLd = {
   }
   .grow-card:hover { transform: translateY(-4px); border-color: var(--brass-light); box-shadow: var(--shadow-soft); }
   .grow-card h3 { margin-bottom: 0.4rem; font-size: var(--text-title-md); color: var(--navy-deep); font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
-  .grow-card p { margin: 0; font-size: var(--text-body-sm); }
+  .grow-card p { margin: 0; font-size: var(--text-body); }
 
-  .community-line { max-width: 46rem; margin-bottom: var(--space-lg); }
+  .community-line { max-width: 64rem; margin-bottom: var(--space-lg); }
 
   @media (max-width: 62rem) {
     .promise-split { grid-template-columns: 1fr; }
@@ -363,5 +390,7 @@ const orgJsonLd = {
   }
   @media (max-width: 48rem) {
     .immersive-hero { padding-bottom: 5rem; }
+    .founder-card { grid-template-columns: 1fr; }
+    .founder-photo { max-width: 20rem; }
   }
 </style>
