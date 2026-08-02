@@ -262,6 +262,17 @@ const orgJsonLd = {
     .hero-sub-line { opacity: 1; transform: none; animation: none; }
   }
 
+  @media (max-width: 48rem) {
+    .hero-sub-warm {
+      max-width: none;
+      padding: var(--space-md) var(--space-lg);
+      background: rgba(255, 253, 249, 0.92);
+      border-radius: var(--radius-lg);
+      color: var(--ink);
+    }
+    .hero-sub-line-em { color: var(--green); }
+  }
+
   .merged-indicator {
     position: absolute;
     left: 50%;

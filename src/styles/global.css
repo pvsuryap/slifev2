@@ -173,26 +173,6 @@ main:focus { outline: none; }
 .stripe .s3 { background: var(--green); }
 .stripe .s4 { background: var(--navy); }
 
-/* ---- WhatsApp float ---- */
-
-.whatsapp-float {
-  position: fixed;
-  right: 1.25rem;
-  bottom: 5.25rem;
-  z-index: 150;
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--green);
-  color: #fff;
-  box-shadow: var(--shadow-card);
-  transition: transform var(--dur-normal) var(--ease), background var(--dur-normal) var(--ease);
-}
-.whatsapp-float:hover { transform: translateY(-2px); background: var(--green-deep); }
-.whatsapp-float svg { width: 28px; height: 28px; fill: currentColor; }
-
 /* ---- Forms ---- */
 
 .circle-form-shell { max-width: 26rem; }
