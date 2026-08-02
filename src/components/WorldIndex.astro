@@ -152,6 +152,17 @@ const worlds = (await getCollection('worlds')).sort((a, b) =>
   }
 
   @media (max-width: 48rem) {
-    .idisp { aspect-ratio: 16 / 9; max-height: 16rem; }
+    .idisp { aspect-ratio: auto; height: auto; }
+    .idisp-slices {
+      position: static;
+      inset: auto;
+      width: max-content;
+      min-width: 100%;
+      aspect-ratio: 16 / 9;
+      grid-template-columns: repeat(5, minmax(7rem, 1fr));
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+    }
+    .idisp-slice { scroll-snap-align: start; }
   }
 </style>

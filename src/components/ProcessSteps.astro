@@ -128,7 +128,7 @@ const { eyebrow, title, steps = PROCESS_STEPS } = Astro.props;
 
   @media (max-width: 62rem) {
     .process-card { grid-template-columns: 1fr; }
-    .process-image-stage { order: -1; aspect-ratio: 16 / 9; max-height: 16rem; height: auto; min-height: 0; }
+    .process-image-stage { display: none; }
     .process-step { cursor: default; }
   }
 </style>
