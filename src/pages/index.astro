@@ -38,17 +38,17 @@ const orgJsonLd = {
   <section class="immersive-hero" id="top" aria-label="Sweeyam Life">
     <div class="video-container">
       <video preload="none" autoplay loop muted playsinline id="hero-video" poster="/images/hero-poster.jpg">
-        <source src="/images/portal-forest.mp4" type="video/mp4" />
+        <source src="/images/5692315-hd_1920_1080_30fps.mp4" type="video/mp4" />
       </video>
       <div class="warm-overlay"></div>
     </div>
 
     <div class="hero-left-align" id="hero-content">
-      <h1 class="hero-title-massive">Sweeyam<br />Life</h1>
-      <p class="hero-sub-warm" aria-label="Return to self, to nature and to meaningful everyday rituals.">
-        <span class="hero-sub-line">Return to self,</span>
-        <span class="hero-sub-line">to nature and to</span>
-        <span class="hero-sub-line hero-sub-line-em">meaningful everyday rituals.</span>
+      <h1 class="hero-title-massive"><span class="hero-cap">S</span>weeyam<br /><span class="hero-cap">L</span>ife</h1>
+      <p class="hero-lede on-dark-soft" aria-label="Return to self, to nature and to meaningful everyday rituals.">
+        <span class="hero-sub-line">Return to <span class="hero-em">self</span>,</span>
+        <span class="hero-sub-line">to <span class="hero-em">nature</span> and to</span>
+        <span class="hero-sub-line">meaningful <span class="hero-em">everyday rituals</span>.</span>
       </p>
     </div>
 
@@ -199,7 +199,7 @@ const orgJsonLd = {
     isolation: isolate;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     min-height: 100vh;
     padding: calc(var(--header-h) + 1.5rem) var(--page-pad) 6rem;
     color: var(--on-dark);
@@ -216,62 +216,26 @@ const orgJsonLd = {
     filter: blur(var(--hero-blur, 0));
     transition: transform 0.4s ease-out, border-radius 0.4s ease-out, filter 0.4s ease-out;
   }
-  .video-container video { width: 100%; height: 100%; object-fit: cover; }
+  .video-container video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
   .warm-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, rgba(16, 35, 61, 0.55) 0%, rgba(16, 35, 61, 0.15) 40%, rgba(16, 35, 61, 0.85) 100%);
   }
 
-  .hero-left-align {
-    max-width: 56rem;
-    transform: translateY(0);
-    opacity: 1;
-  }
-  .hero-title-massive {
-    margin-bottom: var(--space-md);
-    font-size: clamp(2.75rem, 8vw, 5.5rem);
-    line-height: 0.98;
-    color: var(--on-dark);
-    text-shadow: 0 4px 30px rgba(8, 22, 39, 0.4);
-  }
-  .hero-sub-warm {
-    max-width: 32rem;
-    margin: 0;
+  .hero-left-align { max-width: 56rem; transform: translateY(0); opacity: 1; }
+  .hero-title-massive { margin-bottom: var(--space-md); color: var(--white); }
+  .hero-cap { font-size: 1.15em; line-height: 1; }
+  .hero-lede {
+    max-width: 40rem;
+    margin-bottom: 0;
     display: grid;
-    gap: 0.15em;
-    font-size: var(--text-caption-up);
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    line-height: 1.4;
-    color: var(--on-dark-soft);
+    gap: 0;
+    font-size: var(--text-body);
+    color: var(--white);
   }
-  .hero-sub-line {
-    display: block;
-    opacity: 0;
-    transform: translateY(8px);
-    animation: hero-sub-in 0.7s var(--ease) forwards;
-  }
-  .hero-sub-line:nth-child(1) { animation-delay: 0.3s; }
-  .hero-sub-line:nth-child(2) { animation-delay: 0.5s; }
-  .hero-sub-line:nth-child(3) { animation-delay: 0.7s; }
-  .hero-sub-line-em { font-style: italic; color: var(--brass-light); }
-  @keyframes hero-sub-in { to { opacity: 1; transform: translateY(0); } }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-sub-line { opacity: 1; transform: none; animation: none; }
-  }
-
-  @media (max-width: 48rem) {
-    .hero-sub-warm {
-      max-width: none;
-      padding: var(--space-md) var(--space-lg);
-      background: rgba(255, 253, 249, 0.92);
-      border-radius: var(--radius-lg);
-      color: var(--ink);
-    }
-    .hero-sub-line-em { color: var(--green); }
-  }
+  .hero-sub-line { display: block; }
+  .hero-em { font-style: italic; color: var(--white); }
 
   .merged-indicator {
     position: absolute;
@@ -400,7 +364,6 @@ const orgJsonLd = {
     .founder-grid, .grow-cards { grid-template-columns: 1fr; }
   }
   @media (max-width: 48rem) {
-    .immersive-hero { padding-bottom: 5rem; }
     .founder-card { grid-template-columns: 1fr; }
     .founder-photo { max-width: 20rem; }
   }

@@ -1,12 +1,12 @@
-// Sweeyam Life — homepage interactions (nav solidify, hero video, parallax).
+// Sweeyam Life — homepage interactions (hero video, parallax).
 // Scroll reveals are handled globally by scripts/reveal.ts (loaded in Base).
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Overlay header solidifies on scroll
+// Overlay header turns navy once the hero video has been scrolled past
 const nav = document.querySelector<HTMLElement>('header.site-header.overlay');
 if (nav) {
-  const updateNav = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  const updateNav = () => nav.classList.toggle('scrolled', window.scrollY > window.innerHeight * 0.9);
   updateNav();
   window.addEventListener('scroll', updateNav, { passive: true });
 }
