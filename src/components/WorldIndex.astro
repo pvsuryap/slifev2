@@ -156,12 +156,12 @@ const worlds = (await getCollection('worlds')).sort((a, b) =>
     .idisp-slices {
       position: static;
       inset: auto;
-      width: max-content;
-      min-width: 100%;
+      width: 100%;
       aspect-ratio: 16 / 9;
-      grid-template-columns: repeat(5, minmax(7rem, 1fr));
+      grid-template-columns: repeat(5, 7rem);
       overflow-x: auto;
       scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
     }
     .idisp-slice { scroll-snap-align: start; }
   }
